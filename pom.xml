@@ -141,13 +141,6 @@
                     <skip>true</skip>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>io.fabric8</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <configuration>
-                    <skip>${docker.skip}</skip>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
     <repositories>
@@ -172,20 +165,23 @@
         <profile>
             <id>build-push</id>
             <activation>
+                <file>
+                    <exists>Dockerfile</exists>
+                </file>
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <docker.image.prefix>amsidhmicroservice</docker.image.prefix>
                 <docker.image.name>${project.artifactId}</docker.image.name>
                 <docker.username>amsidhmicroservice</docker.username>
-                <docker.password></docker.password>
+                <docker.password>dckr_pat_41nv8_e3iGXPfDsSVtAn9HX54ag</docker.password>
             </properties>
             <build>
                 <plugins>
                     <plugin>
                         <groupId>io.fabric8</groupId>
                         <artifactId>docker-maven-plugin</artifactId>
-                        <version>0.38.1</version>
+                        <version>0.40.2</version>
                         <configuration>
                             <verbose>true</verbose>
                             <images>
@@ -221,6 +217,7 @@
                 </plugins>
             </build>
         </profile>
+
         <profile>
             <id>sonar</id>
             <activation>

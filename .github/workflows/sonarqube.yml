@@ -28,4 +28,4 @@ jobs:
           java-version: '19'
           distribution: 'temurin'
       - name: Maven Clean, Install and SonarAnalysis
-        run: mvn -B clean install -Dsonar.host.url=${{secrets.SONAR_HOST_URL}} -Dsonar.login=${{secrets.SONAR_TOKEN}} -P sonar
+        run: mvn -B clean install -Dsonar.host.url=${{secrets.SONAR_HOST_URL}} -Dsonar.login=${{secrets.SONAR_TOKEN}} -Ddocker.skip=true -P sonar
