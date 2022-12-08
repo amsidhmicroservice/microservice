@@ -1,7 +1,7 @@
 # This workflow will build a Java project with Maven
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
-name: microservice-sonarqube-workflow
+name: SonarQube Analysis for microservice project
 
 on:
   push:
@@ -15,6 +15,9 @@ on:
     # Run on every 5 minutes
     #- cron: '0 0 * * 0'
   workflow_dispatch:
+env:
+  SONAR_TOKEN: ${{secrets.SONAR_TOKEN}}
+  SONAR_HOST_URL: ${{secrets.SONAR_HOST_URL}}
 jobs:
   build_clean_install_push_job:
     name: build_clean_install_push_job
@@ -28,13 +31,4 @@ jobs:
           java-version: '19'
           distribution: 'temurin'
       - name: Maven Clean, Install and SonarCloud
-        run: |-
-          echo "Display current path"
-          pwd
-          echo "List all the files in this location"
-          ls -al 
-          echo "Look files inside person-service"
-          ls -al /home/runner/work/microservice/microservice/person-service
-          echo "Look files inside account-service"
-          ls -al /home/runner/work/microservice/microservice/account-service
-          mvn -B clean install -Dsonar.login=${{secrets.SONAR_TOKEN}}  -P sonar –debug
+        run: mvn -B clean install -Dsonar.host.url=${{SONAR_HOST_URL}} -Dsonar.login=${{SONAR_TOKEN}} -P sonar
