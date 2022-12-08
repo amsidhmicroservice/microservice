@@ -10,9 +10,6 @@
     <artifactId>address-service</artifactId>
     <name>address-service</name>
     <description>address-service</description>
-    <properties>
-        <docker.skip>false</docker.skip>
-    </properties>
     <dependencies>
         <dependency>
             <groupId>com.amsidh.mvc</groupId>

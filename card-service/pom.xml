@@ -10,9 +10,6 @@
     <artifactId>card-service</artifactId>
     <name>card-service</name>
     <description>card-service</description>
-    <properties>
-        <docker.skip>false</docker.skip>
-    </properties>
     <dependencies>
         <dependency>
             <groupId>com.amsidh.mvc</groupId>
