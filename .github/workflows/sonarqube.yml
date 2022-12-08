@@ -15,9 +15,6 @@ on:
     # Run on every 5 minutes
     #- cron: '0 0 * * 0'
   workflow_dispatch:
-env:
-  SONAR_TOKEN: ${{secrets.SONAR_TOKEN}}
-  SONAR_HOST_URL: ${{secrets.SONAR_HOST_URL}}
 jobs:
   build_clean_install_push_job:
     name: build_clean_install_push_job
@@ -31,4 +28,4 @@ jobs:
           java-version: '19'
           distribution: 'temurin'
       - name: Maven Clean, Install and SonarCloud
-        run: mvn -B clean install -Dsonar.host.url=${{SONAR_HOST_URL}} -Dsonar.login=${{SONAR_TOKEN}} -P sonar
+        run: mvn -B clean install -Dsonar.host.url=${{secrets.SONAR_HOST_URL}} -Dsonar.login=${{secrets.SONAR_TOKEN}} -P sonar
