@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+spec:
+  selector:
+   matchLabels:
+    app: postgres
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:latest
+          imagePullPolicy: IfNotPresent
+          args:
+            - -c
+            - max_connections=1000
+            - -c
+            - shared_buffers=1024MB
+          envFrom:
+            - configMapRef:
+                name: postgres-config
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgredb
+      volumes:
+        - name: postgredb
+          hostPath:
+            path: /run/desktop/mnt/host/e/database-data/sql
+            type: Directory
+
+---
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: postgres-config
+      labels:
+        app: postgres
+    data:
+      POSTGRES_DB: postgresdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: postgres
+      labels:
+        app: postgres
+    spec:
+       ports:
+        - name: postgres
+          port: 5432
+          nodePort: 30432
+       type: LoadBalancer
+       selector:
+        app: postgres

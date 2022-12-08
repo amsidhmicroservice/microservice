@@ -1,0 +1,14 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  httpexchanges:
+    recording:
+      include: time_taken,session_id,response_headers,request_headers,principal,remote_address,cookie_headers,authorization_header
+      enabled: true
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+

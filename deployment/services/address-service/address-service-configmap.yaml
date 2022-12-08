@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: address-service-configmap
+  labels:
+    app: address-service-configmap
+data:
+  SPRING_PROFILES_ACTIVE: "prod"
+  POSTGRES_DATABASE_HOST: "postgres"
+  POSTGRES_DATABASE_PORT: "5432"
+  POSTGRES_DATABASE: "addressdb"
+  POSTGRES_USERNAME: "postgres"
+  POSTGRES_PASSWORD: "root"
+  ZOOKEEPER_HOST: "zk-zookeeper"
+  ZOOKEEPER_PORT: "2181"
+

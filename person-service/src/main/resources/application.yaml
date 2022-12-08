@@ -1,0 +1,78 @@
+server:
+  port: ${APPLICATION_PORT:0}
+
+logging:
+  level:
+    com.amsidh.mvc.client.feign: debug
+
+spring:
+  application:
+    name: person-service
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${POSTGRES_DATABASE_HOST:localhost}:${POSTGRES_DATABASE_PORT:5432}/${POSTGRES_DATABASE:persondb}
+    username: ${POSTGRES_USERNAME:postgres}
+    password: ${POSTGRES_PASSWORD:root}
+  jpa:
+    show-sql: true
+    generate-ddl: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
+  cloud:
+    zookeeper:
+      connect-string: ${ZOOKEEPER_HOST:localhost}:${ZOOKEEPER_PORT:2181}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:persondb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: sa
+  jpa:
+    show-sql: true
+    generate-ddl: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
+  cloud:
+    zookeeper:
+      connect-string: ${ZOOKEEPER_HOST:localhost}:${ZOOKEEPER_PORT:2181}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:persondb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: sa
+  jpa:
+    show-sql: true
+    generate-ddl: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true

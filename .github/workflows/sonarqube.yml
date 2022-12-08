@@ -1,0 +1,40 @@
+# This workflow will build a Java project with Maven
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: microservice-sonarqube-workflow
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    # * is a special character in YAML, so you have to quote this string
+    # Runs at 17:30 UTC every day.
+    - cron: '30 17 * * *'
+    # Run on every 5 minutes
+    #- cron: '0 0 * * 0'
+  workflow_dispatch:
+jobs:
+  build_clean_install_push_job:
+    name: build_clean_install_push_job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the project repository
+        uses: actions/checkout@v2
+      - name: Setup Java 19
+        uses: actions/setup-java@v3
+        with:
+          java-version: '19'
+          distribution: 'temurin'
+      - name: Maven Clean, Install and SonarCloud
+        run: |-
+          echo "Display current path"
+          pwd
+          echo "List all the files in this location"
+          ls -al 
+          echo "Look files inside person-service"
+          ls -al /home/runner/work/microservice/microservice/person-service
+          echo "Look files inside account-service"
+          ls -al /home/runner/work/microservice/microservice/account-service
+          mvn -B clean install -Dsonar.login=${{secrets.SONAR_TOKEN}}  -P sonar –debug

@@ -1,0 +1,37 @@
+apiVersion: skaffold/v2beta19
+kind: Config
+build:
+  tagPolicy:
+    sha256: { }
+  local:
+    push: true
+  artifacts:
+    - image: amsidhmicroservice/card-service
+      jib:
+        project: card-service
+
+    - image: amsidhmicroservice/account-service
+      jib:
+        project: account-service
+
+    - image: amsidhmicroservice/location-service
+      jib:
+        project: location-service
+
+    - image: amsidhmicroservice/address-service
+      jib:
+        project: address-service
+
+    - image: amsidhmicroservice/person-service
+      jib:
+        project: person-service
+
+deploy:
+  kubectl:
+    manifests:
+      - deployment/services/card-service/*.yaml
+      - deployment/services/account-service/*.yaml
+      - deployment/services/location-service/*.yaml
+      - deployment/services/address-service/*.yaml
+      - deployment/services/person-service/*.yaml
+
