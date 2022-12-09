@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.0</version>
+        <version>2.6.7</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.amsidh.mvc</groupId>
@@ -16,8 +16,7 @@
     <description>microservice</description>
     <properties>
         <java.version>19</java.version>
-        <spring-cloud.version>2022.0.0-RC2</spring-cloud.version>
-        <spring-boot-admin.version>3.0.0-M4</spring-boot-admin.version>
+        <spring-cloud.version>2021.0.2</spring-cloud.version>
         <jib.maven-plugin-version>3.3.1</jib.maven-plugin-version>
         <docker.skip>true</docker.skip>
     </properties>
@@ -32,7 +31,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -50,10 +49,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-tracing-bridge-brave</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -79,6 +74,21 @@
             <groupId>net.logstash.logback</groupId>
             <artifactId>logstash-logback-encoder</artifactId>
             <version>7.2</version>
+        </dependency>
+        <!-- OpenTracing dependencies-->
+        <dependency>
+            <groupId>io.opentracing.brave</groupId>
+            <artifactId>brave-opentracing</artifactId>
+        </dependency>
+        <!--<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+        </dependency>-->
+
+        <!-- Feign Client Dependency-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
     </dependencies>
     <dependencyManagement>
@@ -224,8 +234,8 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <!-- Sonar Properties for Local SonarQube-->
-                <!--<sourceDirectory>${basedir}/src/main</sourceDirectory>
+            <!-- Sonar Properties for Local SonarQube-->
+            <!--<sourceDirectory>${basedir}/src/main</sourceDirectory>
                 <testSourceDirectory>${basedir}/src/test</testSourceDirectory>
                 <sonar.host.url>http://localhost:9000</sonar.host.url>
                 <sonar.login>admin</sonar.login>
@@ -238,7 +248,7 @@
 
                 <sonar.tsql.file.suffixes>sql,tsql</sonar.tsql.file.suffixes>
                 <sonar.plsql.file.suffixes>pks,pkb</sonar.plsql.file.suffixes>
--->
+            -->
 
                 <!-- Sonar Properties for SonarCloud-->
                 <sourceDirectory>${basedir}/src/main</sourceDirectory>

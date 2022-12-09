@@ -28,6 +28,7 @@ public class AccountController {
 
     @GetMapping("{accountId}")
     public AccountModel getAccountByAccountId(@PathVariable("accountId") Long accountId) {
+       log.info("Request received for getAccountByAccountId with accountId {}", accountId);
         AccountModel accountModel = accountService.getAccountById(accountId);
         CardModel cardModel = cardServiceFeignClient.getCardByCardId(1L);
         accountModel.setCardModel(cardModel);

@@ -2,7 +2,10 @@ server:
   port: ${APPLICATION_PORT:0}
 logging:
   level:
+    root: error
+    com.amsidh.mvc: info
     com.amsidh.mvc.client.feign: debug
+    org.hibernate.SQL: debug
 
 spring:
   application:
@@ -22,7 +25,7 @@ spring:
     username: ${POSTGRES_USERNAME:postgres}
     password: ${POSTGRES_PASSWORD:root}
   jpa:
-    show-sql: true
+    show-sql: false
     generate-ddl: true
   h2:
     console:
@@ -45,7 +48,7 @@ spring:
     username: sa
     password: sa
   jpa:
-    show-sql: true
+    show-sql: false
     generate-ddl: true
   h2:
     console:
@@ -68,7 +71,7 @@ spring:
     username: sa
     password: sa
   jpa:
-    show-sql: true
+    show-sql: false
     generate-ddl: true
   h2:
     console:
