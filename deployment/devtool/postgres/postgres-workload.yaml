@@ -25,13 +25,12 @@ spec:
             - configMapRef:
                 name: postgres-config
           volumeMounts:
-            - mountPath: /var/lib/postgresql/data
-              name: postgredb
+            - name: postgres-persistent-storage
+              mountPath: /var/lib/postgresql/data
       volumes:
-        - name: postgredb
-          hostPath:
-            path: /run/desktop/mnt/host/e/database-data/sql
-            type: Directory
+        - name: postgres-persistent-storage
+          persistentVolumeClaim:
+            claimName: postgres-database-data-volume
 
 ---
     apiVersion: v1
@@ -56,6 +55,6 @@ spec:
         - name: postgres
           port: 5432
           nodePort: 30432
-       type: LoadBalancer
+       type: ClusterIP
        selector:
         app: postgres

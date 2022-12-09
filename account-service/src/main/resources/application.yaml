@@ -5,11 +5,18 @@ logging:
   level:
     com.amsidh.mvc.client.feign: debug
 
+
 spring:
   application:
     name: account-service
   profiles:
     active: ${SPRING_PROFILES_ACTIVE:dev}
+
+# All traces should be sent to latency analysis tool
+management:
+  tracing:
+    sampling:
+      probability: 1.0
 
 
 ---

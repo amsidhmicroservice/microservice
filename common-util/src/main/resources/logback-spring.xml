@@ -12,7 +12,7 @@
                     <timeZone>DEFAULT</timeZone>
                 </timestamp>
                 <context/>
-                <!--<pattern>
+                <pattern>
                     <pattern>
                         <omitEmptyFields>true</omitEmptyFields>
                         {
@@ -25,6 +25,7 @@
                         }
                     </pattern>
                 </pattern>
+
                 <logLevel>
                     <fieldName>severity</fieldName>
                 </logLevel>
@@ -45,7 +46,7 @@
                 <arguments>
                     <includeNonStructuredArguments>true</includeNonStructuredArguments>
                 </arguments>
-                <logstashMarkers/>-->
+                <logstashMarkers/>
                 <pattern>
                     <omitEmptyFields>true</omitEmptyFields>
                     <pattern>

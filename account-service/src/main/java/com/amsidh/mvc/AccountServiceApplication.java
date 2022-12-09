@@ -27,4 +27,6 @@ public class AccountServiceApplication implements CommandLineRunner {
         accountService.saveAccount(accountModel);
         log.info("Number of account saved {}", accountService.getAccounts());
     }
+
+
 }
