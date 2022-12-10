@@ -2,16 +2,16 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: person-service
-    version: 0.0.2-SNAPSHOT
-  name: person-service
+    app: person-ms
+    version: latest
+  name: person-ms
   namespace: default
 spec:
   replicas: 2
   minReadySeconds: 45
   selector:
     matchLabels:
-      app: person-service
+      app: person-ms
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -20,39 +20,25 @@ spec:
   template:
     metadata:
       labels:
-        app: person-service
-        version: 0.0.2-SNAPSHOT
+        app: person-ms
+        version: latest
     spec:
       containers:
-        - image: amsidhmicroservice/person-service:0.0.2-SNAPSHOT
+        - image: amsidhmicroservice/person-service:latest
           imagePullPolicy: IfNotPresent
-          name: person-service
+          name: person-ms
           ports:
             - name: liveness-port
               containerPort: 8080
               protocol: TCP
           envFrom:
             - configMapRef:
-                name: person-service-configmap
+                name: person-ms-configmap
           resources:
             requests:
               memory: 512Mi
             limits:
               memory: 1024Mi
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: liveness-port
-            failureThreshold: 5
-            periodSeconds: 10
-            initialDelaySeconds: 60
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: liveness-port
-            failureThreshold: 5
-            periodSeconds: 10
-            initialDelaySeconds: 60
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
 ---
@@ -61,7 +47,7 @@ kind: Service
 metadata:
   labels:
     app: person-service
-    version: 0.0.2-SNAPSHOT
+    version: latest
   name: person-service
 spec:
   ports:
@@ -71,6 +57,6 @@ spec:
       nodePort: 32110
       protocol: TCP
   selector:
-    app: person-service
-    version: 0.0.2-SNAPSHOT
+    app: person-ms
+    version: latest
   type: LoadBalancer

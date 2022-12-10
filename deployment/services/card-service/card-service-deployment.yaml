@@ -2,16 +2,16 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: card-service
-    version: 0.0.2-SNAPSHOT
-  name: card-service
+    app: card-ms
+    version: latest
+  name: card-ms
   namespace: default
 spec:
   replicas: 1
   minReadySeconds: 45
   selector:
     matchLabels:
-      app: card-service
+      app: card-ms
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -20,20 +20,20 @@ spec:
   template:
     metadata:
       labels:
-        app: card-service
-        version: 0.0.2-SNAPSHOT
+        app: card-ms
+        version: latest
     spec:
       containers:
-        - image: amsidhmicroservice/card-service:0.0.2-SNAPSHOT
+        - image: amsidhmicroservice/card-service:latest
           imagePullPolicy: IfNotPresent
-          name: card-service
+          name: card-ms
           ports:
             - name: liveness-port
               containerPort: 8080
               protocol: TCP
           envFrom:
             - configMapRef:
-                name: card-service-configmap
+                name: card-ms-configmap
           resources:
             requests:
               memory: 512Mi
@@ -47,7 +47,7 @@ kind: Service
 metadata:
   labels:
     app: card-service
-    version: 0.0.2-SNAPSHOT
+    version: latest
   name: card-service
 spec:
   ports:
@@ -57,6 +57,6 @@ spec:
       nodePort: 32100
       protocol: TCP
   selector:
-    app: card-service
-    version: 0.0.2-SNAPSHOT
+    app: card-ms
+    version: latest
   type: LoadBalancer
