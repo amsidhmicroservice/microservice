@@ -30,8 +30,8 @@ public class PersonController {
     @GetMapping("{personId}")
     public PersonModel getPerson(@PathVariable("personId") Long personId) {
         PersonModel personModel = personService.getPersonByPersonId(personId);
-        personModel.setAddressModel(addressFeignClient.getAddressByAddressId(1L));
-        personModel.setAccountModel(accountFeignClient.getAccountByAccountId(1L));
+        personModel.setAddressModel(addressFeignClient.getAddressByAddressId(personId));
+        personModel.setAccountModel(accountFeignClient.getAccountByAccountId(personId));
         return personModel;
     }
 

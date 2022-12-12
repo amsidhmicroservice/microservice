@@ -4,6 +4,7 @@ server:
 logging:
   level:
     com.amsidh.mvc.client.feign: debug
+    org.hibernate.SQL: debug
 
 spring:
   application:
@@ -18,11 +19,11 @@ spring:
       on-profile: prod
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://${POSTGRES_DATABASE_HOST:localhost}:${POSTGRES_DATABASE_PORT:5432}/${POSTGRES_DATABASE:locationdb}
+    url: jdbc:postgresql://${POSTGRES_DATABASE_HOST:localhost}:${POSTGRES_DATABASE_PORT:5432}/${POSTGRES_DATABASE:postgresdb}
     username: ${POSTGRES_USERNAME:postgres}
     password: ${POSTGRES_PASSWORD:root}
   jpa:
-    show-sql: true
+    show-sql: false
     generate-ddl: true
   h2:
     console:
@@ -41,11 +42,11 @@ spring:
       on-profile: dev
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:locationdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:postgresdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     username: sa
     password: sa
   jpa:
-    show-sql: true
+    show-sql: false
     generate-ddl: true
   h2:
     console:
@@ -64,11 +65,11 @@ spring:
       on-profile: test
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:locationdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:postgresdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     username: sa
     password: sa
   jpa:
-    show-sql: true
+    show-sql: false
     generate-ddl: true
   h2:
     console:

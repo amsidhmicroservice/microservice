@@ -2,16 +2,16 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: account-service
-    version: 0.0.2-SNAPSHOT
-  name: account-service
+    app: location-ms
+    version: 0.0.4-SNAPSHOT
+  name: location-ms
   namespace: default
 spec:
   replicas: 1
   minReadySeconds: 45
   selector:
     matchLabels:
-      app: account-service
+      app: location-ms
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -20,20 +20,22 @@ spec:
   template:
     metadata:
       labels:
-        app: account-service
-        version: 0.0.2-SNAPSHOT
+        app: location-ms
+        version: 0.0.4-SNAPSHOT
     spec:
       containers:
-        - image: amsidhmicroservice/account-service:0.0.2-SNAPSHOT
+        - image: amsidhmicroservice/location-service:0.0.4-SNAPSHOT
           imagePullPolicy: IfNotPresent
-          name: account-service
+          name: location-ms
           ports:
             - name: liveness-port
               containerPort: 8080
               protocol: TCP
           envFrom:
             - configMapRef:
-                name: account-service-configmap
+                name: location-ms-configmap
+            - secretRef:
+                name: location-secret
           resources:
             requests:
               memory: 512Mi
@@ -41,22 +43,3 @@ spec:
               memory: 1024Mi
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app: account-service
-    version: 0.0.2-SNAPSHOT
-  name: account-service
-spec:
-  ports:
-    - name: http
-      port: 8084
-      targetPort: 8080
-      nodePort: 32101
-      protocol: TCP
-  selector:
-    app: account-service
-    version: 0.0.2-SNAPSHOT
-  type: LoadBalancer

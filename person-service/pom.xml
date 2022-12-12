@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.amsidh.mvc</groupId>
         <artifactId>microservice</artifactId>
-        <version>0.0.2-SNAPSHOT</version>
+        <version>0.0.4-SNAPSHOT</version>
     </parent>
     <artifactId>person-service</artifactId>
     <name>person-service</name>
@@ -17,7 +17,7 @@
         <dependency>
             <groupId>com.amsidh.mvc</groupId>
             <artifactId>common-util</artifactId>
-            <version>0.0.2-SNAPSHOT</version>
+            <version>0.0.4-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
@@ -26,22 +26,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-                <configuration>
-                    <to>
-                        <image>${project.artifactId}</image>
-                        <tags>${project.version},latest</tags>
-                    </to>
-                    <container>
-                        <mainClass>com.amsidh.mvc.PersonServiceApplication</mainClass>
-                        <jvmFlags>
-                            <jvmFlag>-Djava.security.egd=file:/dev/./urandom</jvmFlag>
-                        </jvmFlags>
-                    </container>
-                </configuration>
             </plugin>
         </plugins>
     </build>

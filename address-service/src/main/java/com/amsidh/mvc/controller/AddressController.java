@@ -28,7 +28,7 @@ public class AddressController {
     @GetMapping("{addressId}")
     public AddressModel getAddressByAddressId(@PathVariable("addressId") Long addressId) {
         AddressModel addressModel = addressService.getAddressByAddressId(addressId);
-        LocationModel locationModel = locationServiceFeignClient.findLocationByLocationId(1L);
+        LocationModel locationModel = locationServiceFeignClient.findLocationByLocationId(addressId);
         addressModel.setLocationModel(locationModel);
         return addressModel;
     }

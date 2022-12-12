@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: person-service
+    version: 0.0.4-SNAPSHOT
+  name: person-service
+spec:
+  ports:
+    - name: person-http
+      port: 80
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: person-ms
+    version: 0.0.4-SNAPSHOT
+  type: LoadBalancer

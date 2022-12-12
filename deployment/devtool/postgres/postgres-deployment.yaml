@@ -24,6 +24,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: postgres-config
+            - secretRef:
+                name: postgres-secret
           volumeMounts:
             - name: postgres-persistent-storage
               mountPath: /var/lib/postgresql/data
@@ -31,30 +33,3 @@ spec:
         - name: postgres-persistent-storage
           persistentVolumeClaim:
             claimName: postgres-database-data-volume
-
----
-    apiVersion: v1
-    kind: ConfigMap
-    metadata:
-      name: postgres-config
-      labels:
-        app: postgres
-    data:
-      POSTGRES_DB: postgresdb
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: root
----
-    apiVersion: v1
-    kind: Service
-    metadata:
-      name: postgres
-      labels:
-        app: postgres
-    spec:
-       ports:
-        - name: postgres
-          port: 5432
-          nodePort: 30432
-       type: ClusterIP
-       selector:
-        app: postgres

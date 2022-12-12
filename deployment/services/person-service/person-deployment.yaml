@@ -2,16 +2,16 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: card-service
-    version: 0.0.2-SNAPSHOT
-  name: card-service
+    app: person-ms
+    version: 0.0.4-SNAPSHOT
+  name: person-ms
   namespace: default
 spec:
   replicas: 1
   minReadySeconds: 45
   selector:
     matchLabels:
-      app: card-service
+      app: person-ms
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -20,20 +20,22 @@ spec:
   template:
     metadata:
       labels:
-        app: card-service
-        version: 0.0.2-SNAPSHOT
+        app: person-ms
+        version: 0.0.4-SNAPSHOT
     spec:
       containers:
-        - image: amsidhmicroservice/card-service:0.0.2-SNAPSHOT
+        - image: amsidhmicroservice/person-service:0.0.4-SNAPSHOT
           imagePullPolicy: IfNotPresent
-          name: card-service
+          name: person-ms
           ports:
-            - name: liveness-port
+            - name: person-http
               containerPort: 8080
               protocol: TCP
           envFrom:
             - configMapRef:
-                name: card-service-configmap
+                name: person-ms-configmap
+            - secretRef:
+                name: person-secret
           resources:
             requests:
               memory: 512Mi
@@ -41,22 +43,3 @@ spec:
               memory: 1024Mi
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app: card-service
-    version: 0.0.2-SNAPSHOT
-  name: card-service
-spec:
-  ports:
-    - name: http
-      port: 8085
-      targetPort: 8080
-      nodePort: 32100
-      protocol: TCP
-  selector:
-    app: card-service
-    version: 0.0.2-SNAPSHOT
-  type: LoadBalancer

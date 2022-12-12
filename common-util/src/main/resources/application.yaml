@@ -11,4 +11,3 @@ management:
     health:
       enabled: true
       show-details: always
-

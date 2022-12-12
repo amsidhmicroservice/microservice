@@ -1,37 +1,55 @@
-apiVersion: skaffold/v2beta19
+apiVersion: skaffold/v4beta1
 kind: Config
+metadata:
+  name: microservice
 build:
   tagPolicy:
     sha256: { }
   local:
     push: true
   artifacts:
-    - image: amsidhmicroservice/card-service
-      jib:
-        project: card-service
+  - image: amsidhmicroservice/card-service
+    context: card-service
+    docker:
+      dockerfile: Dockerfile
 
-    - image: amsidhmicroservice/account-service
-      jib:
-        project: account-service
+  - image: amsidhmicroservice/account-service
+    context: account-service
+    docker:
+      dockerfile: Dockerfile
 
-    - image: amsidhmicroservice/location-service
-      jib:
-        project: location-service
+  - image: amsidhmicroservice/location-service
+    context: location-service
+    docker:
+      dockerfile: Dockerfile
 
-    - image: amsidhmicroservice/address-service
-      jib:
-        project: address-service
+  - image: amsidhmicroservice/address-service
+    context: address-service
+    docker:
+      dockerfile: Dockerfile
 
-    - image: amsidhmicroservice/person-service
-      jib:
-        project: person-service
+  - image: amsidhmicroservice/person-service
+    context: person-service
+    docker:
+      dockerfile: Dockerfile
+manifests:
+  rawYaml:
+  - deployment/services/card-service/card-configmap.yaml
+  - deployment/services/card-service/card-deployment.yaml
+  - deployment/services/card-service/card-service.yaml
 
-deploy:
-  kubectl:
-    manifests:
-      - deployment/services/card-service/*.yaml
-      - deployment/services/account-service/*.yaml
-      - deployment/services/location-service/*.yaml
-      - deployment/services/address-service/*.yaml
-      - deployment/services/person-service/*.yaml
+  - deployment/services/account-service/account-configmap.yaml
+  - deployment/services/account-service/account-deployment.yaml
+  - deployment/services/account-service/account-service.yaml
 
+  - deployment/services/location-service/location-configmap.yaml
+  - deployment/services/location-service/location-deployment.yaml
+  - deployment/services/location-service/location-service.yaml
+
+  - deployment/services/address-service/address-configmap.yaml
+  - deployment/services/address-service/address-deployment.yaml
+  - deployment/services/address-service/address-service.yaml
+
+  - deployment/services/person-service/person-configmap.yaml
+  - deployment/services/person-service/person-deployment.yaml
+  - deployment/services/person-service/person-service.yaml

@@ -1,6 +1,6 @@
 FROM openjdk:19-alpine
 VOLUME /tmp
-COPY /target/account-service-*.jar accountservice.jar
+COPY /target/account-service-0.0.4-SNAPSHOT.jar accountservice.jar
 COPY src src
 COPY Dockerfile Dockerfile
 COPY pom.xml pom.xml
