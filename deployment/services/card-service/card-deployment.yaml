@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: card-ms
-    version: latest
+    version: 0.0.4-SNAPSHOT
   name: card-ms
   namespace: default
 spec:
@@ -21,14 +21,14 @@ spec:
     metadata:
       labels:
         app: card-ms
-        version: latest
+        version: 0.0.4-SNAPSHOT
     spec:
       containers:
-        - image: amsidhmicroservice/card-service:latest
+        - image: amsidhmicroservice/card-service:0.0.4-SNAPSHOT
           imagePullPolicy: IfNotPresent
           name: card-ms
           ports:
-            - name: liveness-port
+            - name: card-http
               containerPort: 8080
               protocol: TCP
           envFrom:

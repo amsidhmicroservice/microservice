@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: location-ms
-    version: latest
+    version: 0.0.4-SNAPSHOT
   name: location-ms
   namespace: default
 spec:
@@ -21,10 +21,10 @@ spec:
     metadata:
       labels:
         app: location-ms
-        version: latest
+        version: 0.0.4-SNAPSHOT
     spec:
       containers:
-        - image: amsidhmicroservice/location-service:latest
+        - image: amsidhmicroservice/location-service:0.0.4-SNAPSHOT
           imagePullPolicy: IfNotPresent
           name: location-ms
           ports:

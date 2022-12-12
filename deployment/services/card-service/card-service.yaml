@@ -4,7 +4,7 @@ kind: Service
 metadata:
   labels:
     app: card-service
-    version: latest
+    version: 0.0.4-SNAPSHOT
   name: card-service
 spec:
   ports:
@@ -14,5 +14,5 @@ spec:
       protocol: TCP
   selector:
     app: card-ms
-    version: latest
-  type: LoadBalancer
+    version: 0.0.4-SNAPSHOT
+  type: ClusterIP

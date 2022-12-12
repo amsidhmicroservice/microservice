@@ -4,7 +4,7 @@ kind: Service
 metadata:
   labels:
     app: person-service
-    version: latest
+    version: 0.0.4-SNAPSHOT
   name: person-service
 spec:
   ports:
@@ -14,5 +14,5 @@ spec:
       protocol: TCP
   selector:
     app: person-ms
-    version: latest
+    version: 0.0.4-SNAPSHOT
   type: LoadBalancer

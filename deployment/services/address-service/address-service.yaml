@@ -4,7 +4,7 @@ kind: Service
 metadata:
   labels:
     app: address-service
-    version: latest
+    version: 0.0.4-SNAPSHOT
   name: address-service
 spec:
   ports:
@@ -14,5 +14,5 @@ spec:
       protocol: TCP
   selector:
     app: address-ms
-    version: latest
-  type: LoadBalancer
+    version: 0.0.4-SNAPSHOT
+  type: ClusterIP

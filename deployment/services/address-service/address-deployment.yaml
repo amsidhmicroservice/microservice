@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: address-ms
-    version: latest
+    version: 0.0.4-SNAPSHOT
   name: address-ms
   namespace: default
 spec:
@@ -21,10 +21,10 @@ spec:
     metadata:
       labels:
         app: address-ms
-        version: latest
+        version: 0.0.4-SNAPSHOT
     spec:
       containers:
-        - image: amsidhmicroservice/address-service:latest
+        - image: amsidhmicroservice/address-service:0.0.4-SNAPSHOT
           imagePullPolicy: IfNotPresent
           name: address-ms
           ports:
