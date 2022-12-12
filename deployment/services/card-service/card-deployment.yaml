@@ -34,6 +34,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: card-ms-configmap
+            - secretRef:
+                name: card-secret
           resources:
             requests:
               memory: 512Mi
