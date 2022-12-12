@@ -34,17 +34,22 @@ build:
       dockerfile: Dockerfile
 manifests:
   rawYaml:
-  - deployment/services/card-service/card-service-configmap.yaml
-  - deployment/services/card-service/card-service-deployment.yaml
+  - deployment/services/card-service/card-configmap.yaml
+  - deployment/services/card-service/card-deployment.yaml
+  - deployment/services/card-service/card-service.yaml
 
-  - deployment/services/account-service/account-service-configmap.yaml
-  - deployment/services/account-service/account-service-deployment.yaml
+  - deployment/services/account-service/account-configmap.yaml
+  - deployment/services/account-service/account-deployment.yaml
+  - deployment/services/account-service/account-service.yaml
 
-  - deployment/services/location-service/location-service-configmap.yaml
-  - deployment/services/location-service/location-service-deployment.yaml
+  - deployment/services/location-service/location-configmap.yaml
+  - deployment/services/location-service/location-deployment.yaml
+  - deployment/services/location-service/location-service.yaml
 
-  - deployment/services/address-service/address-service-configmap.yaml
-  - deployment/services/address-service/address-service-deployment.yaml
+  - deployment/services/address-service/address-configmap.yaml
+  - deployment/services/address-service/address-deployment.yaml
+  - deployment/services/address-service/address-service.yaml
 
-  - deployment/services/person-service/person-service-configmap.yaml
-  - deployment/services/person-service/person-service-deployment.yaml
+  - deployment/services/person-service/person-configmap.yaml
+  - deployment/services/person-service/person-deployment.yaml
+  - deployment/services/person-service/person-service.yaml

@@ -43,6 +43,10 @@ spec:
       POSTGRES_DB: postgresdb
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+      PGDATA: /tmp
+      http_proxy: ''
+      https_proxy: ''
+      no_proxy: ''
 ---
     apiVersion: v1
     kind: Service

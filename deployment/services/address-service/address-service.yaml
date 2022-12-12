@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: address-service
+    version: latest
+  name: address-service
+spec:
+  ports:
+    - name: address-http
+      port: 80
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: address-ms
+    version: latest
+  type: LoadBalancer
