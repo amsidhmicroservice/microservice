@@ -28,9 +28,8 @@ spec:
           imagePullPolicy: IfNotPresent
           name: location-ms
           ports:
-            - name: liveness-port
+            - name: location-http
               containerPort: 8080
-              protocol: TCP
           envFrom:
             - configMapRef:
                 name: location-ms-configmap

@@ -8,10 +8,8 @@ metadata:
   name: address-service
 spec:
   ports:
-    - name: address-http
-      port: 80
-      targetPort: 8080
-      protocol: TCP
+    - port: 80
+      targetPort: address-http
   selector:
     app: address-ms
     version: 0.0.4-SNAPSHOT

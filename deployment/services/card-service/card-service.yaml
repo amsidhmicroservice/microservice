@@ -8,10 +8,8 @@ metadata:
   name: card-service
 spec:
   ports:
-    - name: card-http
-      port: 80
-      targetPort: 8080
-      protocol: TCP
+    - port: 80
+      targetPort: card-http
   selector:
     app: card-ms
     version: 0.0.4-SNAPSHOT

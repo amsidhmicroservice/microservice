@@ -8,10 +8,8 @@ metadata:
   name: person-service
 spec:
   ports:
-    - name: person-http
-      port: 80
-      targetPort: 8080
-      protocol: TCP
+    - port: 80
+      targetPort: person-http
   selector:
     app: person-ms
     version: 0.0.4-SNAPSHOT

@@ -8,10 +8,8 @@ metadata:
   name: location-service
 spec:
   ports:
-    - name: location-http
-      port: 80
-      targetPort: 8080
-      protocol: TCP
+    - port: 80
+      targetPort: location-http
   selector:
     app: location-ms
     version: 0.0.4-SNAPSHOT
