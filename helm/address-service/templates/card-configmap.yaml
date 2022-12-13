@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: address-ms-configmap
+  labels:
+    app: address-ms-configmap
+data:
+  SPRING_PROFILES_ACTIVE: {{.Values.configmap.activeProfile}}
+  APPLICATION_PORT: "8080"
+  POSTGRES_DATABASE_HOST: "postgres"
+  POSTGRES_DATABASE_PORT: "5432"
+  POSTGRES_DATABASE: "postgresdb"
+  POSTGRES_USERNAME: "postgres"
+  ZOOKEEPER_HOST: "zookeeper"
+  ZOOKEEPER_PORT: "2181"
+

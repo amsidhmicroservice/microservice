@@ -1,0 +1,15 @@
+namespace: default
+version: 0.0.4-SNAPSHOT
+
+deployment:
+  imageName: account-service
+  name: account-ms
+  numberOfReplicas: 1
+
+service:
+  name: account-service
+  type: ClusterIP
+
+configmap:
+  activeProfile: prod
+
