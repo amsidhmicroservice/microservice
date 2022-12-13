@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("/health")
+@RequestMapping
 public class HealthController {
 
     @Value("${spring.application.name:default-service}")
@@ -21,6 +21,6 @@ public class HealthController {
     @GetMapping
     public String healthCheck() {
         log.info("Inside healthCheck of class HealthController of {}", serviceName);
-        return String.format("%s is up and running", serviceName);
+        return String.format("Service %s is up and running", serviceName);
     }
 }

@@ -25,7 +25,7 @@ public class CardController {
 
     @GetMapping("/{cardId}")
     public CardModel getCardByCardId(@PathVariable("cardId") Long cardId) {
-        log.info("Request received with cardId {}", cardId);
+        log.info("Request received for cardId {}", cardId);
         return cardService.getCardByCardId(cardId);
     }
 
