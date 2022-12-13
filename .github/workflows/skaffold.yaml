@@ -2,31 +2,19 @@
 name: java-maven-skaffold-build-push-docker
 on:
   workflow_dispatch:
-  workflow_call:
-    inputs:
-      repositoryFolder:
-        description: "The code repository folder to build. '.' for the root folder, './folder1/mavenRoot/' for a sub-folder"
-        default: '.'
-        required: false
-        type: string
-      javaVersion:
-        description: 'The Java version to build and deploy. Default is Java17'
-        default: '19'
-        required: false
-        type: string
 jobs:
   build-push-skaffold:
     runs-on: ubuntu-latest
-    #defaults:
-    #  run:
-    #    working-directory: ${{ inputs.repositoryFolder }}
+    defaults:
+      run:
+        working-directory: '.'
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up JDK ${{ inputs.javaVersion }}
+      - name: Set up JDK 19
         uses: actions/setup-java@v3
         with:
-          java-version: ${{ inputs.javaVersion }}
+          java-version: 19
           distribution: "temurin"
           cache: "maven"
 
