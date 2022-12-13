@@ -27,7 +27,7 @@ jobs:
       - name: Build image with Skaffold
         uses: hiberbee/github-action-skaffold@1.23.0
         with:
-          working-directory: ${{ inputs.repositoryFolder }}
+          working-directory: .
           command: build
           push: true
           repository: https://index.docker.io/v1
