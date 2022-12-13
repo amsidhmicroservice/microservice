@@ -1,6 +1,7 @@
 # Builds
 name: java-maven-skaffold-build-push-docker
 on:
+  workflow_dispatch:
   workflow_call:
     inputs:
       repositoryFolder:
