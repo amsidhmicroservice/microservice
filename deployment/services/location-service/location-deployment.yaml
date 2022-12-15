@@ -24,7 +24,7 @@ spec:
         version: 0.0.4-SNAPSHOT
     spec:
       containers:
-        - image: amsidhmicroservice/location-service:0.0.4-SNAPSHOT
+        - image: location-service
           imagePullPolicy: IfNotPresent
           name: location-ms
           ports:

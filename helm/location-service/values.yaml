@@ -8,7 +8,7 @@ deployment:
 
 service:
   name: location-service
-  type: ClusterIP
+  type: NodePort
 
 configmap:
   activeProfile: prod

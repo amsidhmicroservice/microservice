@@ -28,6 +28,9 @@ build:
         fromImage: openjdk:19-alpine
 
 deploy:
+#  kubectl:
+#    manifests:
+#    - deployment/devtool/gateway/ingress-gateway.yaml
   helm:
     releases:
     - name: card-service-chart

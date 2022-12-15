@@ -12,6 +12,4 @@ data:
   POSTGRES_DATABASE_PORT: "5432"
   POSTGRES_DATABASE: "postgresdb"
   POSTGRES_USERNAME: "postgres"
-  ZOOKEEPER_HOST: "zookeeper"
-  ZOOKEEPER_PORT: "2181"
 

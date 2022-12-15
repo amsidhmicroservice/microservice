@@ -15,4 +15,4 @@ spec:
   selector:
     app: person-ms
     version: 0.0.4-SNAPSHOT
-  type: LoadBalancer
+  type: NodePort

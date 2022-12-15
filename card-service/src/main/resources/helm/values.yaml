@@ -9,7 +9,7 @@ deployment:
 
 service:
   name: card-service
-  type: ClusterIP
+  type: NodePort
 
 configmap:
   activeProfile: prod
