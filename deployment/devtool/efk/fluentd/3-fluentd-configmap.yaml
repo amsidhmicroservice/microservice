@@ -1,0 +1,42 @@
+#@include file-fluent.conf
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fluentd-config
+  namespace: fluentd
+data:
+  fluent.conf: |-
+    ################################################################
+    # This source gets all logs from local docker host
+    <match fluent.**>
+      @type null
+    </match>
+    
+    <source>
+      @type tail
+      @id in_tail_container_logs
+      path /var/log/containers/counter*.log,/var/log/containers/person*.log,/var/log/containers/account*.log,/var/log/containers/card*.log,/var/log/containers/address*.log,,/var/log/containers/location*.log
+      pos_file /var/log/fluentd-containers.log.pos
+      tag kubernetes.*
+      read_from_head true
+      <parse>
+        @type json
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+    
+    <filter kubernetes.**>
+      @type kubernetes_metadata
+    </filter>
+    
+    <match **>
+      @type elasticsearch_dynamic
+      @log_level info
+      include_tag_key true
+      host "#{ENV['FLUENT_cELASTICSEARCH_HOST'] || 'elasticsearch.elastic-kibana'}"
+      port "#{ENV['FLUENT_ELASTICSEARCH_PORT'] || '9200'}"
+      reload_connections true
+      logstash_format true
+      logstash_prefix ${record['kubernetes']['pod_name']}
+    </match>

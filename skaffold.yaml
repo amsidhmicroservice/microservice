@@ -5,6 +5,7 @@ build:
     sha256: { }
   local:
     concurrency: 0
+    push: false
   artifacts:
     - image: card-service
       context: card-service
