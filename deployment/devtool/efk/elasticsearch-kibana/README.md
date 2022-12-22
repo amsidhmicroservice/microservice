@@ -18,3 +18,8 @@ check now
 > 
 
 
+To get the password of elastic user use following command
+PASSWORD=$(kubectl get secret quickstart-es-elastic-user -o go-template='{{.data.elastic | base64decode}}')
+
+kubectl port-forward service/quickstart-es-http 9200
+curl -u "elastic:$PASSWORD" -k "https://localhost:9200"

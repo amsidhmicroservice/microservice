@@ -4,7 +4,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: fluentd-config
-  namespace: fluentd
+  
 data:
   fluent.conf: |-
     ################################################################
@@ -34,8 +34,14 @@ data:
       @type elasticsearch_dynamic
       @log_level info
       include_tag_key true
-      host "#{ENV['FLUENT_cELASTICSEARCH_HOST'] || 'elasticsearch.elastic-kibana'}"
-      port "#{ENV['FLUENT_ELASTICSEARCH_PORT'] || '9200'}"
+      
+      host quickstart-es-internal-http
+      port 9200
+      user elastic
+      password ZWVYAy18tif0p2LX97DA4470
+      scheme https
+      ssl_verify false
+    
       reload_connections true
       logstash_format true
       logstash_prefix ${record['kubernetes']['pod_name']}
