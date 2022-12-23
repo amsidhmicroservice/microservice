@@ -31,7 +31,7 @@ build:
 deploy:
   kubectl:
     manifests:
-    - deployment/devtool/gateway/ingress-gateway.yaml
+    - deployment/devtool/gateway/2-ingress-gateway.yaml
   helm:
     releases:
     - name: card-service-chart
