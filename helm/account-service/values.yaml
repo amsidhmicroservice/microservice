@@ -8,7 +8,7 @@ deployment:
 
 service:
   name: account-service
-  type: ClusterIP
+  type: NodePort
 
 configmap:
   activeProfile: prod

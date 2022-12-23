@@ -15,4 +15,4 @@ spec:
   selector:
     app: card-ms
     version: 0.0.4-SNAPSHOT
-  type: ClusterIP
+  type: NodePort

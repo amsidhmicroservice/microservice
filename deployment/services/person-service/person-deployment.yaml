@@ -24,7 +24,7 @@ spec:
         version: 0.0.4-SNAPSHOT
     spec:
       containers:
-        - image: amsidhmicroservice/person-service:0.0.4-SNAPSHOT
+        - image: person-service
           imagePullPolicy: IfNotPresent
           name: person-ms
           ports:
