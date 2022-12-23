@@ -51,6 +51,22 @@ spec:
                 port:
                   number: 80
 
+          - path: /currency-conversion/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: currency-conversion
+                port:
+                  number: 8282
+
+          - path: /currency-exchange/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: currency-exchange
+                port:
+                  number: 8181
+
           - path: /
             pathType: ImplementationSpecific
             backend:

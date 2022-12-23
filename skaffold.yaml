@@ -5,7 +5,7 @@ build:
     sha256: { }
   local:
     concurrency: 0
-    push: false
+    push: true
   artifacts:
     - image: card-service
       context: card-service
@@ -29,9 +29,10 @@ build:
         fromImage: openjdk:19-alpine
 
 deploy:
-  kubectl:
-    manifests:
-    - deployment/devtool/gateway/2-ingress-gateway.yaml
+#  kubectl:
+#    manifests:
+#    - deployment/devtool/gateway/1-ingress-controller.yaml
+#    - deployment/devtool/gateway/2-ingress-gateway.yaml
   helm:
     releases:
     - name: card-service-chart
