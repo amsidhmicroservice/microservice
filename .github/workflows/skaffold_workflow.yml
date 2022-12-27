@@ -1,4 +1,4 @@
-name: Build And Deployon Minikube using Skaffold Github action
+name: Build And Deploy on Minikube using Skaffold Github action
 on:
   push:
     paths:
