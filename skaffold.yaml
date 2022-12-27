@@ -7,24 +7,24 @@ build:
     concurrency: 0
     push: true
   artifacts:
-    - image: ms-card-service
+    - image: amsidhmicroservice/ms-card-service
       context: ms-card-service
       jib:
         fromImage: openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
-    - image: ms-account-service
+    - image: amsidhmicroservice/ms-account-service
       context: ms-account-service
       jib:
         fromImage: openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
-    - image: ms-location-service
+    - image: amsidhmicroservice/ms-location-service
       context: ms-location-service
       jib:
         fromImage: openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
-    - image: ms-address-service
+    - image: amsidhmicroservice/ms-address-service
       context: ms-address-service
       jib:
         fromImage: openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
 
-    - image: ms-person-service
+    - image: amsidhmicroservice/ms-person-service
       context: ms-person-service
       jib:
         fromImage: openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
