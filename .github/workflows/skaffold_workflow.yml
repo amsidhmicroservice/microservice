@@ -70,24 +70,6 @@ jobs:
         with:
           addons: registry, ingress
 
-      - name: Listing and Checking all the helm path and files
-        run: |-
-          echo "Listing all the files in current directory"
-          pwd
-          ls -al
-          echo "Listing all the files under /usr/local/bin"
-          ls -al /usr/local/bin
-          pwd
-          echo "Configured path"
-          echo $PATH
-          echo "Listing helm file under directory /usr/local/bin/helm"
-          ls -al /usr/local/bin/helm
-          pwd
-          echo "Helm Version"
-          helm version
-          echo "Helm list"
-          helm list
-
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
@@ -95,24 +77,12 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Cache layers
-        uses: actions/cache@v3
-        with:
-          path: "{{ github.workspace }}/.skaffold/cache"
-          key: skaffold-${{ hashFiles('**/cache') }}
-          restore-keys: |
-            skaffold-
-
       - name: Run Skaffold pipeline as action
         uses: hiberbee/github-action-skaffold@latest
         with:
-          command: deploy
-          cache: false
+          command: run
           filename: skaffold.yaml
-          namespace: default
           repository: ${{ secrets.DOCKER_REPOSITORY }}
-          verbosity: info
-          working-directory: ${{ github.workspace }}
 
       - name: Get Helm releases
         run: helm list
