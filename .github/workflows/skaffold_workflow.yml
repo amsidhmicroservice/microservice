@@ -81,7 +81,6 @@ jobs:
           echo $PATH
           echo "Listing hel file under directory /usr/local/bin/helm"
           ls -al /usr/local/bin/helm
-
         with:
           helm: repo list
           repository-config: helm/repositories.yaml
