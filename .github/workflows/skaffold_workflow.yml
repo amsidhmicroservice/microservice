@@ -68,14 +68,8 @@ jobs:
       - name: Get repositories
         uses: hiberbee/github-action-helm@1.5.0
         with:
-          helm: repo list
           repository-config: helm/repositories.yaml
 
       - name: Lint chart
         run: helm lint nginx
         working-directory: helm/ms-card-service
-
-      - name: Install release
-        uses: hiberbee/github-action-helm@latest
-        with:
-          helm: helm list
