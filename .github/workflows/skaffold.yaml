@@ -29,7 +29,7 @@ jobs:
         id: build
         with:
           working-directory: ${{ github.workspace }}
-          file: skaffold.yaml
+          filename: skaffold.yaml
           command: build
           push: true
           repository: https://index.docker.io/v1/amsidhmicroservice
