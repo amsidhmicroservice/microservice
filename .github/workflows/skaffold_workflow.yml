@@ -70,8 +70,7 @@ jobs:
         with:
           addons: registry, ingress
 
-      - name: Setup Helm
-        uses: hiberbee/github-action-helm@1.13.0
+      - name: Listing and Checking all the helm path and files
         run: |-
           echo "Listing all the files in current directory"
           ls -al
@@ -81,6 +80,9 @@ jobs:
           echo $PATH
           echo "Listing hel file under directory /usr/local/bin/helm"
           ls -al /usr/local/bin/helm
+
+      - name: Setup Helm
+        uses: hiberbee/github-action-helm@1.13.0
         with:
           helm: repo list
           repository-config: helm/repositories.yaml
