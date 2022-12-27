@@ -39,4 +39,5 @@ jobs:
           file-output: tags.json
           repository: amsidhmicroservice
           working-directory: ${{ github.workspace }}
+          skip-tests: true
 
