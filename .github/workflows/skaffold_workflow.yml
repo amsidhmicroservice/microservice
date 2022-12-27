@@ -80,7 +80,7 @@ jobs:
       - name: Run Skaffold pipeline as action
         uses: hiberbee/github-action-skaffold@latest
         with:
-          command: run
+          command: deploy
           filename: skaffold.yaml
           repository: ${{ secrets.DOCKER_REPOSITORY }}
 
