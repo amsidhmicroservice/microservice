@@ -30,31 +30,6 @@
                     <mainClass>com.amsidh.mvc.CardServiceApplication</mainClass>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-                <configuration>
-                    <container>
-                        <mainClass>com.amsidh.mvc.CardServiceApplication</mainClass>
-                    </container>
-                    <to>
-                        <image>docker.io/amsidhmicroservice/ms-card-service</image>
-                        <auth>
-                           <username>amsidhmicroservice</username>
-                            <password>dckr_pat_41nv8_e3iGXPfDsSVtAn9HX54ag</password>
-                        </auth>
-                    </to>
-                    <from>
-                        <image>
-                            openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
-                        </image>
-                        <auth>
-                            <username>amsidhmicroservice</username>
-                            <password>dckr_pat_41nv8_e3iGXPfDsSVtAn9HX54ag</password>
-                        </auth>
-                    </from>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 </project>
