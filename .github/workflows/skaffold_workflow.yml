@@ -55,4 +55,3 @@ jobs:
           registry: ${{ secrets.DOCKER_REPOSITORY }}
           working-directory: ${{ github.workspace }}
           skip-tests: true
-
