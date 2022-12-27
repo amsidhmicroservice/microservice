@@ -73,6 +73,7 @@ jobs:
       - name: Setup Helm
         uses: hiberbee/github-action-helm@1.13.0
         with:
+          helm: repo list
           repository-config: helm/repositories.yaml
 
       - name: Login to Docker Hub
