@@ -66,5 +66,5 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Lint chart
-        run: helm lint nginx
+        run: helm lint ms-card-service
         working-directory: helm/ms-card-service
