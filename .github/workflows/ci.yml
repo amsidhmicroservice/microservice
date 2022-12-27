@@ -22,7 +22,7 @@ jobs:
           cache: "maven"
 
       - name: Maven Clean, Install
-        run: mvn clean install -f /common-util/pom.xml
+        run: mvn clean install --file common-util/pom.xml
 
       - name: Cache layers
         uses: actions/cache@v3
