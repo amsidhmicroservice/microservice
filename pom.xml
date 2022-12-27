@@ -120,32 +120,6 @@
                     <groupId>com.google.cloud.tools</groupId>
                     <artifactId>jib-maven-plugin</artifactId>
                     <version>${jib.maven-plugin-version}</version>
-                    <configuration>
-                        <to>
-                            <image>docker.io/amsidhmicroservice/${project.artifactId}</image>
-                            <auth>
-                                <username>${docker.username}</username>
-                                <password>${docker.password}</password>
-                            </auth>
-                        </to>
-                        <from>
-                            <image>
-                                openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
-                            </image>
-                            <auth>
-                                <username>${docker.username}</username>
-                                <password>${docker.password}</password>
-                            </auth>
-                        </from>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>build</goal>
-                            </goals>
-                        </execution>
-                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>

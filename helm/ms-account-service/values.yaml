@@ -2,7 +2,7 @@ namespace: default
 version: 0.0.4-SNAPSHOT
 
 deployment:
-  imageName: ms-account-service
+  imageName: docker.io/amsidhmicroservice/ms-account-service
   name: account-ms
   numberOfReplicas: 1
 

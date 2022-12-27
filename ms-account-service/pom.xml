@@ -30,15 +30,6 @@
                     <mainClass>com.amsidh.mvc.AccountServiceApplication</mainClass>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-                <configuration>
-                    <container>
-                        <mainClass>com.amsidh.mvc.AccountServiceApplication</mainClass>
-                    </container>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 

@@ -2,7 +2,7 @@ namespace: default
 version: 0.0.4-SNAPSHOT
 
 deployment:
-  imageName: ms-address-service
+  imageName: docker.io/amsidhmicroservice/ms-address-service
   name: address-ms
   numberOfReplicas: 1
 

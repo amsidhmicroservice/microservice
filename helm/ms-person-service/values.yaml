@@ -2,7 +2,7 @@ namespace: default
 version: 0.0.4-SNAPSHOT
 
 deployment:
-  imageName: ms-person-service
+  imageName: docker.io/amsidhmicroservice/ms-person-service
   name: person-ms
   numberOfReplicas: 1
 

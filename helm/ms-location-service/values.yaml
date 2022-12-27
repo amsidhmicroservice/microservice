@@ -2,7 +2,7 @@ namespace: default
 version: 0.0.4-SNAPSHOT
 
 deployment:
-  imageName: ms-location-service
+  imageName: docker.io/amsidhmicroservice/ms-location-service
   name: location-ms
   numberOfReplicas: 1
 
