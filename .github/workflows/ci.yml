@@ -31,27 +31,11 @@ jobs:
           restore-keys: |
             skaffold-
 
-      - name: Run Skaffold pipeline as command
-        uses: hiberbee/github-action-skaffold@latest
-        id: build
-        with:
-          command: build
-          working-directory: ${{ github.workspace }}
-          skip-tests: false
-          repository: ${{ secrets.SKAFFOLD_DEFAULT_REPO }}
-
       - name: Run Skaffold with output to JSON
         uses: hiberbee/github-action-skaffold@latest
         with:
           command: build
           file-output: tags.json
-          repository: ${{ secrets.DOCKER_REPOSITORY }}
+          repository: https://index.docker.io/v1/amsidhmicroservice
           working-directory: ${{ github.workspace }}
-
-      - name: Read JSON file output
-        run: cat tags.json
-        working-directory: ${{ github.workspace }}
-
-      - name: Read JSON step output
-        run: echo '${{ steps.build.outputs.output }}'
 
