@@ -109,7 +109,6 @@ jobs:
           command: deploy
           cache: false
           filename: skaffold.yaml
-          insecure-registries: localhost:5000
           namespace: default
           repository: ${{ secrets.DOCKER_REPOSITORY }}
           verbosity: info
