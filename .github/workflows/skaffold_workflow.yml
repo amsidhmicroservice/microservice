@@ -52,6 +52,6 @@ jobs:
         with:
           command: build
           filename: skaffold.yaml
-          registry: ${{ secrets.DOCKER_REPOSITORY }}
+          repository: ${{ secrets.DOCKER_REPOSITORY }}
           working-directory: ${{ github.workspace }}
           skip-tests: true
