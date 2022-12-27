@@ -5,6 +5,7 @@ on:
       - src/**
       - .github/workflows/ci.yml
   workflow_dispatch:
+
 jobs:
   build:
     name: Skaffold Build
