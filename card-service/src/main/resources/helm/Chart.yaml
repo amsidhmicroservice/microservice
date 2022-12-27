@@ -1,6 +1,0 @@
-apiVersion: v1
-appVersion: 0.0.4-SNAPSHOT
-description: This is Card-Service Application
-name: card-service
-version: 0.0.4-SNAPSHOT
-

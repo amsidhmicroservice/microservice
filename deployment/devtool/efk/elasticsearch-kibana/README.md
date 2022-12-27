@@ -16,7 +16,12 @@ check now
 >> kubectl apply -f operator.yaml
 > 
 > 
+3) Install 3-elasticsearch.yaml
 
+> kubectl apply -f .\efk\elasticsearch-kibana\3-elasticsearch.yaml
+If you get image Init:ImagePullBackOff error then pull the image first and check the status of the pod. Delete/recreate the pod
+For minikube -> minikube ssh docker pull imagename
+For Dockerdesktop ->  docker pull imageName
 
 To get the password of elastic user use following command
 PASSWORD=$(kubectl get secret quickstart-es-elastic-user -o go-template='{{.data.elastic | base64decode}}')

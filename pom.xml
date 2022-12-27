@@ -19,6 +19,8 @@
         <spring-cloud.version>2021.0.2</spring-cloud.version>
         <jib.maven-plugin-version>3.3.1</jib.maven-plugin-version>
         <docker.skip>true</docker.skip>
+        <docker.username>amsidhmicroservice</docker.username>
+        <docker.password>dckr_pat_41nv8_e3iGXPfDsSVtAn9HX54ag</docker.password>
     </properties>
     <dependencies>
         <dependency>
@@ -140,90 +142,35 @@
     </repositories>
     <modules>
         <module>common-util</module>
-        <module>address-service</module>
-        <module>location-service</module>
-        <module>account-service</module>
-        <module>card-service</module>
-        <module>person-service</module>
+        <module>ms-address-service</module>
+        <module>ms-location-service</module>
+        <module>ms-account-service</module>
+        <module>ms-card-service</module>
+        <module>ms-person-service</module>
     </modules>
+
     <profiles>
-        <profile>
-            <id>build-push</id>
-            <activation>
-                <file>
-                    <exists>Dockerfile</exists>
-                </file>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <properties>
-                <docker.image.prefix>amsidhmicroservice</docker.image.prefix>
-                <docker.image.name>${project.artifactId}</docker.image.name>
-                <docker.username>amsidhmicroservice</docker.username>
-                <docker.password>dckr_pat_41nv8_e3iGXPfDsSVtAn9HX54ag</docker.password>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>io.fabric8</groupId>
-                        <artifactId>docker-maven-plugin</artifactId>
-                        <version>0.40.2</version>
-                        <configuration>
-                            <verbose>true</verbose>
-                            <images>
-                                <image>
-                                    <name>${docker.image.prefix}/${docker.image.name}</name>
-                                    <alias>${project.name}</alias>
-                                    <build>
-                                        <!--copies artifact to docker build dir in target-->
-                                        <assembly>
-                                            <descriptorRef>artifact-with-dependencies</descriptorRef>
-                                        </assembly>
-                                        <dockerFileDir>${project.basedir}</dockerFileDir>
-                                        <tags>
-                                            <tag>latest</tag>
-                                            <tag>${project.version}</tag>
-                                        </tags>
-                                    </build>
-                                </image>
-                            </images>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>push-to-docker</id>
-                                <phase>install</phase>
-                                <goals>
-                                    <goal>build</goal>
-                                    <goal>push</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-
-                </plugins>
-            </build>
-        </profile>
-
         <profile>
             <id>sonar</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-            <!-- Sonar Properties for Local SonarQube-->
-            <!--<sourceDirectory>${basedir}/src/main</sourceDirectory>
-                <testSourceDirectory>${basedir}/src/test</testSourceDirectory>
-                <sonar.host.url>http://localhost:9000</sonar.host.url>
-                <sonar.login>admin</sonar.login>
-                <sonar.password>admin123</sonar.password>
-                <sonar.scm.disabled>true</sonar.scm.disabled>
-                <sonar.scm.provider>git</sonar.scm.provider>
-                <sonar.log.level>TRACE</sonar.log.level>
-                <sonar.verbose>true</sonar.verbose>
-                <sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
+                <!-- Sonar Properties for Local SonarQube-->
+                <!--<sourceDirectory>${basedir}/src/main</sourceDirectory>
+                    <testSourceDirectory>${basedir}/src/test</testSourceDirectory>
+                    <sonar.host.url>http://localhost:9000</sonar.host.url>
+                    <sonar.login>admin</sonar.login>
+                    <sonar.password>admin123</sonar.password>
+                    <sonar.scm.disabled>true</sonar.scm.disabled>
+                    <sonar.scm.provider>git</sonar.scm.provider>
+                    <sonar.log.level>TRACE</sonar.log.level>
+                    <sonar.verbose>true</sonar.verbose>
+                    <sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
 
-                <sonar.tsql.file.suffixes>sql,tsql</sonar.tsql.file.suffixes>
-                <sonar.plsql.file.suffixes>pks,pkb</sonar.plsql.file.suffixes>
-            -->
+                    <sonar.tsql.file.suffixes>sql,tsql</sonar.tsql.file.suffixes>
+                    <sonar.plsql.file.suffixes>pks,pkb</sonar.plsql.file.suffixes>
+                -->
 
                 <!-- Sonar Properties for SonarCloud-->
                 <sourceDirectory>${basedir}/src/main</sourceDirectory>
@@ -299,6 +246,5 @@
                 </plugins>
             </build>
         </profile>
-
     </profiles>
 </project>

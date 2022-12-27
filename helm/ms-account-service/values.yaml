@@ -1,0 +1,15 @@
+namespace: default
+version: 0.0.4-SNAPSHOT
+
+deployment:
+  imageName: docker.io/amsidhmicroservice/ms-account-service
+  name: account-ms
+  numberOfReplicas: 1
+
+service:
+  name: ms-account-service
+  type: NodePort
+
+configmap:
+  activeProfile: prod
+

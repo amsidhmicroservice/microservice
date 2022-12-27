@@ -1,6 +1,0 @@
-apiVersion: v1
-appVersion: 0.0.4-SNAPSHOT
-description: A Helm chart for Location-Service
-name: location-service
-version: 0.0.4-SNAPSHOT
-

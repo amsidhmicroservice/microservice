@@ -5,45 +5,47 @@ build:
     sha256: { }
   local:
     concurrency: 0
-    push: false
+    push: true
   artifacts:
-    - image: card-service
-      context: card-service
+    - image: docker.io/amsidhmicroservice/ms-card-service
+      context: ms-card-service
       jib:
-        fromImage: openjdk:19-alpine
-    - image: account-service
-      context: account-service
+        fromImage: openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
+    - image: docker.io/amsidhmicroservice/ms-account-service
+      context: ms-account-service
       jib:
-        fromImage: openjdk:19-alpine
-    - image: location-service
-      context: location-service
+        fromImage: openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
+    - image: docker.io/amsidhmicroservice/ms-location-service
+      context: ms-location-service
       jib:
-        fromImage: openjdk:19-alpine
-    - image: address-service
-      context: address-service
+        fromImage: openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
+    - image: docker.io/amsidhmicroservice/ms-address-service
+      context: ms-address-service
       jib:
-        fromImage: openjdk:19-alpine
-    - image: person-service
-      context: person-service
+        fromImage: openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
+
+    - image: docker.io/amsidhmicroservice/ms-person-service
+      context: ms-person-service
       jib:
-        fromImage: openjdk:19-alpine
+        fromImage: openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
 
 deploy:
-  kubectl:
-    manifests:
-    - deployment/devtool/gateway/2-ingress-gateway.yaml
+#  kubectl:
+#    manifests:
+#    - deployment/devtool/gateway/1-ingress-controller.yaml
+#    - deployment/devtool/gateway/2-ingress-gateway.yaml
   helm:
     releases:
-    - name: card-service-chart
-      chartPath: helm/card-service/
-    - name: account-service-chart
-      chartPath: helm/account-service/
-    - name: location-service-chart
-      chartPath: helm/location-service/
-    - name: address-service-chart
-      chartPath: helm/address-service/
-    - name: person-service-chart
-      chartPath: helm/person-service/
+    - name: ms-card-service-chart
+      chartPath: helm/ms-card-service/
+    - name: ms-account-service-chart
+      chartPath: helm/ms-account-service/
+    - name: ms-location-service-chart
+      chartPath: helm/ms-location-service/
+    - name: ms-address-service-chart
+      chartPath: helm/ms-address-service/
+    - name: ms-person-service-chart
+      chartPath: helm/ms-person-service/
 
 profiles:
   # use the cloudbuild profile to build images using Google Cloud Build

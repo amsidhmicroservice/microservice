@@ -1,0 +1,15 @@
+namespace: default
+version: 0.0.4-SNAPSHOT
+
+deployment:
+  imageName: docker.io/amsidhmicroservice/ms-location-service
+  name: location-ms
+  numberOfReplicas: 1
+
+service:
+  name: ms-location-service
+  type: NodePort
+
+configmap:
+  activeProfile: prod
+

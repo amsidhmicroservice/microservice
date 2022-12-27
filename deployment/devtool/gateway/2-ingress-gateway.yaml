@@ -15,7 +15,7 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: card-service
+                name: ms-card-service
                 port:
                   number: 80
 
@@ -23,7 +23,7 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: account-service
+                name: ms-account-service
                 port:
                   number: 80
 
@@ -31,7 +31,7 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: location-service
+                name: ms-location-service
                 port:
                   number: 80
 
@@ -39,7 +39,7 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: address-service
+                name: ms-address-service
                 port:
                   number: 80
 
@@ -47,15 +47,31 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: person-service
+                name: ms-person-service
                 port:
                   number: 80
+
+          - path: /currency-conversion/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: currency-conversion
+                port:
+                  number: 8282
+
+          - path: /currency-exchange/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: currency-exchange
+                port:
+                  number: 8181
 
           - path: /
             pathType: ImplementationSpecific
             backend:
               service:
-                name: person-service
+                name: ms-person-service
                 port:
                   number: 80
 

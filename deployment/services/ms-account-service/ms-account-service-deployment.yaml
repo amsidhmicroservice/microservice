@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: account-ms
+    version: 0.0.4-SNAPSHOT
+  name: account-ms
+  namespace: default
+spec:
+  replicas: 1
+  minReadySeconds: 45
+  selector:
+    matchLabels:
+      app: account-ms
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: account-ms
+        version: 0.0.4-SNAPSHOT
+    spec:
+      containers:
+        - image: ms-account-service
+          imagePullPolicy: IfNotPresent
+          name: account-ms
+          ports:
+            - name: account-http
+              containerPort: 8080
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: account-ms-configmap
+            - secretRef:
+                name: account-secret
+          resources:
+            requests:
+              memory: 512Mi
+            limits:
+              memory: 1024Mi
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
