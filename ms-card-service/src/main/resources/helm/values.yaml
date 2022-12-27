@@ -1,0 +1,16 @@
+namespace: default
+version: 0.0.4-SNAPSHOT
+
+deployment:
+  imageName: ms-card-service
+  tagName:
+  name: card-ms
+  numberOfReplicas: 1
+
+service:
+  name: ms-card-service
+  type: NodePort
+
+configmap:
+  activeProfile: prod
+
