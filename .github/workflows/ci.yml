@@ -10,7 +10,6 @@ jobs:
   build:
     name: Skaffold Build
     runs-on: ubuntu-22.04
-
     steps:
       - name: Checkout sources
         uses: actions/checkout@v3
