@@ -65,11 +65,6 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v3
 
-      - name: Get repositories
-        uses: hiberbee/github-action-helm@1.5.0
-        with:
-          repository-config: helm/repositories.yaml
-
       - name: Lint chart
         run: helm lint nginx
         working-directory: helm/ms-card-service
