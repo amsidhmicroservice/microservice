@@ -36,6 +36,6 @@ jobs:
         with:
           command: build
           file-output: tags.json
-          repository: https://index.docker.io/v1/amsidhmicroservice
+          repository: amsidhmicroservice
           working-directory: ${{ github.workspace }}
 
