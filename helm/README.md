@@ -6,12 +6,12 @@ sanitary command lint provided by helm which you could run to identify possible 
 -> helm lint chartName
 
 Use the following -dry-run command to verify your Spring Boot Helm Chart
--> helm install card-service --debug --dry-run card-service
+-> helm install ms-card-service --debug --dry-run ms-card-service
 Run the helm now use following command
--> helm install card-service-helm card-service
+-> helm install ms-card-service-helm ms-card-service
 Update helm chart if there are any changes made to values file
 
 helm upgrade <release name> <chart directory>
 Ex.
-helm upgrade person-service-helm person-service -f person-service\values.yaml
+helm upgrade ms-person-service-helm ms-person-service -f ms-person-service\values.yaml
 

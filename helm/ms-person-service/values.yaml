@@ -1,0 +1,15 @@
+namespace: default
+version: 0.0.4-SNAPSHOT
+
+deployment:
+  imageName: ms-person-service
+  name: person-ms
+  numberOfReplicas: 1
+
+service:
+  name: ms-person-service
+  type: NodePort
+
+configmap:
+  activeProfile: prod
+

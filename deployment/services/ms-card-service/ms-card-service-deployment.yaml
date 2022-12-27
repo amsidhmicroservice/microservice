@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: card-ms
+    version: 0.0.4-SNAPSHOT
+  name: card-ms
+  namespace: default
+spec:
+  replicas: 1
+  minReadySeconds: 45
+  selector:
+    matchLabels:
+      app: card-ms
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: card-ms
+        version: 0.0.4-SNAPSHOT
+    spec:
+      containers:
+        - image: ms-card-service
+          imagePullPolicy: IfNotPresent
+          name: card-ms
+          ports:
+            - name: card-http
+              containerPort: 8080
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: card-ms-configmap
+            - secretRef:
+                name: card-secret
+          resources:
+            requests:
+              memory: 512Mi
+            limits:
+              memory: 1024Mi
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
