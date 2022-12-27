@@ -26,7 +26,7 @@ jobs:
         id: build
         with:
           command: build
-          working-directory: test
+          working-directory: ${{ github.workspace }}
           skip-tests: false
           repository: ${{ secrets.SKAFFOLD_DEFAULT_REPO }}
 
@@ -36,11 +36,11 @@ jobs:
           command: build
           file-output: tags.json
           repository: ${{ secrets.DOCKER_REPOSITORY }}
-          working-directory: test
+          working-directory: ${{ github.workspace }}
 
       - name: Read JSON file output
         run: cat tags.json
-        working-directory: test
+        working-directory: ${{ github.workspace }}
 
       - name: Read JSON step output
         run: echo '${{ steps.build.outputs.output }}'
@@ -86,7 +86,7 @@ jobs:
           namespace: default
           repository: ${{ secrets.DOCKER_REPOSITORY }}
           verbosity: info
-          working-directory: test
+          working-directory: ${{ github.workspace }}
 
       - name: Run Skaffold with output to file
         uses: hiberbee/github-action-skaffold@latest
@@ -94,7 +94,7 @@ jobs:
           command: build
           file-output: tags.json
           repository: ${{ secrets.DOCKER_REPOSITORY }}
-          working-directory: test
+          working-directory: ${{ github.workspace }}
 
       - name: Get Helm releases
         run: helm list
