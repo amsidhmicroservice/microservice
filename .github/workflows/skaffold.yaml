@@ -36,4 +36,3 @@ jobs:
           command: build
           push: true
           repository: https://index.docker.io/v1/amsidhmicroservice
-          tag: "latest"
