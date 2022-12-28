@@ -34,6 +34,7 @@ deploy:
 #    manifests:
 #    - deployment/devtool/gateway/1-ingress-controller.yaml
 #    - deployment/devtool/gateway/2-ingress-gateway.yaml
+
   helm:
     releases:
     - name: ms-card-service-chart
