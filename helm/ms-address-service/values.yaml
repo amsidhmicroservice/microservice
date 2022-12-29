@@ -3,7 +3,7 @@ version: 0.0.4-SNAPSHOT
 
 deployment:
   imageName: docker.io/amsidhmicroservice/ms-address-service
-  name: address-ms
+  name: ms-address-service
   numberOfReplicas: 1
 
 service:

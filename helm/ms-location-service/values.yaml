@@ -3,7 +3,7 @@ version: 0.0.4-SNAPSHOT
 
 deployment:
   imageName: docker.io/amsidhmicroservice/ms-location-service
-  name: location-ms
+  name: ms-location-service
   numberOfReplicas: 1
 
 service:

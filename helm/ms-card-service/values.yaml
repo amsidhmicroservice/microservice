@@ -3,7 +3,7 @@ version: 0.0.4-SNAPSHOT
 
 deployment:
   imageName: docker.io/amsidhmicroservice/ms-card-service
-  name: card-ms
+  name: ms-card-service
   numberOfReplicas: 1
 
 service:
