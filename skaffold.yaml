@@ -5,7 +5,7 @@ build:
     sha256: { }
   local:
     concurrency: 0
-    push: true
+    push: false
   artifacts:
     - image: docker.io/amsidhmicroservice/ms-card-service
       context: ms-card-service
