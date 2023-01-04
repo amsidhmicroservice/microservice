@@ -21,5 +21,22 @@ logging:
     root: info
     com.amsidh.mvc: info
     com.amsidh.mvc.client.feign: debug
-    org.hibernate: info
-    org.hibernate.type: trace
+    # Log all sql queries
+    sql: debug
+    # Log sql query parameters
+    org.hibernate.orm.jdbc.bind: trace
+    # Log hibernate statistics
+    org.hibernate.stat: debug
+    # Log cache operations
+    org.hibernate.cache: debug
+    # Logging Configuration for Production set the logging.level.org.hibernate: ERROR
+
+spring:
+  jpa:
+    properties:
+      hibernate:
+        # Generate hibernate statistics
+        # Logging Configuration for Production set the generate_statistics: false
+        generate_statistics: true
+        # Log slow queries
+        session.events.log.LOG_QUERIES_SLOWER_THAN_MS: 1

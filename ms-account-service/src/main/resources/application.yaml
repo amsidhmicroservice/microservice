@@ -30,6 +30,8 @@ spring:
   jpa:
     show-sql: false
     generate-ddl: true
+    hibernate:
+      generate_statistics: false
   h2:
     console:
       enabled: true
