@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: person-ms
-    version: 0.0.4-SNAPSHOT
+    version: 0.0.5-SNAPSHOT
   name: person-ms
   namespace: default
 spec:
@@ -21,7 +21,7 @@ spec:
     metadata:
       labels:
         app: person-ms
-        version: 0.0.4-SNAPSHOT
+        version: 0.0.5-SNAPSHOT
     spec:
       containers:
         - image: ms-person-service
