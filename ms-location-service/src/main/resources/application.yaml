@@ -1,17 +1,12 @@
 server:
   port: ${APPLICATION_PORT:0}
 
-logging:
-  level:
-    root: info
-    com.amsidh.mvc: info
-    com.amsidh.mvc.client.feign: debug
-    org.hibernate.SQL: debug
-
 spring:
   application:
     name: ms-location-service
   profiles:
+    include:
+      - common
     active: ${SPRING_PROFILES_ACTIVE:dev}
 
 ---

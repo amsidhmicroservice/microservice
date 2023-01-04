@@ -3,6 +3,10 @@ management:
     web:
       exposure:
         include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: GET,POST,PUT,DELETE
+
   httpexchanges:
     recording:
       include: time_taken,session_id,response_headers,request_headers,principal,remote_address,cookie_headers,authorization_header
@@ -11,3 +15,11 @@ management:
     health:
       enabled: true
       show-details: always
+
+logging:
+  level:
+    root: info
+    com.amsidh.mvc: info
+    com.amsidh.mvc.client.feign: debug
+    org.hibernate: info
+    org.hibernate.type: trace
