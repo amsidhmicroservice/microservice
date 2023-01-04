@@ -21,6 +21,10 @@ logging:
     root: info
     com.amsidh.mvc: info
     com.amsidh.mvc.client.feign: debug
+    # Log all sql queries
+    sql: debug
+    # Log sql query parameters
+    org.hibernate.orm.jdbc.bind: trace
     # Log hibernate statistics
     org.hibernate.stat: debug
     # Log cache operations
