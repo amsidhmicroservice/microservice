@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: card-ms
-    version: 0.0.4-SNAPSHOT
+    version: 0.0.5-SNAPSHOT
   name: card-ms
   namespace: default
 spec:
@@ -21,7 +21,7 @@ spec:
     metadata:
       labels:
         app: card-ms
-        version: 0.0.4-SNAPSHOT
+        version: 0.0.5-SNAPSHOT
     spec:
       containers:
         - image: ms-card-service
@@ -36,6 +36,25 @@ spec:
                 name: card-ms-configmap
             - secretRef:
                 name: card-secret
+          livenessProbe:
+            httpGet:
+              path: "/actuator/health/liveness"
+              port: 8080
+            failureThreshold: 5
+            periodSeconds: 30
+            initialDelaySeconds: 180
+            timeoutSeconds: 30
+            successThreshold: 2
+          readinessProbe:
+            httpGet:
+              path: "/actuator/health/readiness"
+              port: 8080
+            failureThreshold: 10
+            periodSeconds: 120
+            initialDelaySeconds: 240
+            timeoutSeconds: 30
+            successThreshold: 2
+
           resources:
             requests:
               memory: 512Mi

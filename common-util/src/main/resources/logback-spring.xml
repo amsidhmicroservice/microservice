@@ -9,7 +9,6 @@
                 <timestamp>
                     <fieldName>@timestamp</fieldName>
                     <pattern>yyyy-MM-dd'T'HH:mm:ss.SSS'Z'</pattern>
-                    <timeZone>DEFAULT</timeZone>
                 </timestamp>
                 <context/>
                 <pattern>
@@ -61,9 +60,6 @@
                 <stackTrace>
                     <fieldName>exception</fieldName>
                     <throwableConverter class="net.logstash.logback.stacktrace.ShortenedThrowableConverter">
-                        <shortenedClassNameLength>short</shortenedClassNameLength>
-                        <maxDepthPerThrowable>short</maxDepthPerThrowable>
-                        <maxLength>short</maxLength>
                         <rootCauseFirst>true</rootCauseFirst>
                     </throwableConverter>
                 </stackTrace>

@@ -17,43 +17,57 @@ data:
     <source>
       @type tail
       @id in_tail_container_logs
-      path /var/log/containers/counter*.log,/var/log/containers/person*.log,/var/log/containers/account*.log,/var/log/containers/card*.log,/var/log/containers/address*.log,,/var/log/containers/location*.log,/var/log/containers/currency*.log
+      path /var/log/containers/counter*.log,/var/log/containers/ms*.log,/var/log/containers/currency*.log
       pos_file /var/log/fluentd-containers.log.pos
       tag kubernetes.*
       read_from_head true
       <parse>
-        @type regexp
-        expression ^(?<time>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.[^Z]*Z)\s(?<stream>[^\s]+)\s(?<character>[^\s])\s(?<log>.*)$
+        @type multi_format
+        <pattern>
+          format json
+          time_key @timestamp
+          time_format %Y-%m-%dT%H:%M:%S.%NZ
+        </pattern>
+        <pattern>
+          format none
+          message_key logMessage
+        </pattern>
       </parse>
     </source>
-
-    <filter kubernetes.**>
-      @type parser
-      key_name "log"
-      reserve_data true
-      <parse>
-        @type json
-      </parse>
-    </filter>
     
     <filter kubernetes.**>
       @id filter_kubernetes_metadata
       @type kubernetes_metadata
     </filter>
     
-    <match **>
-      @type elasticsearch_dynamic
-      @log_level info
-      include_tag_key true
-      
-      host quickstart-es-internal-http
-      port 9200
-      user elastic
-      password 57Y48yjVWPwh33F63wY96LnN
-      scheme https
-      ssl_verify false
+    <match kubernetes.**>
+      @type copy
+      <store>
+        @type file
+        path /data/output
+      </store>
     
-      reload_connections true
-      logstash_format true
-      logstash_prefix ${record['kubernetes']['pod_name']}
+      #<store>
+      #  @type stdout
+      #</store>
+    
+      <store>
+        @type elasticsearch
+        @log_level info
+        include_tag_key true
+    
+        host quickstart-es-internal-http
+        port 9200
+        user elastic
+        password foI6q3o7v70W7921rSR9ywAQ
+        #cloud_id 25622abc63444ebc814b306bfaea1009:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvJGRhN2FmMzgzMzVlNjQwMWM5OGI3YTMxN2E3NjM1NTQ1JDI2YTA1YjljM2Y1NjRhOWRhZDY0OTZmYTcyNDk4MjY4
+        #cloud_auth 'elastic:aijMQgwrUGfXCC8bjGeOKbeQ'
+        scheme https
+        ssl_verify false
+    
+        reload_connections true
+        logstash_format true
+        logstash_prefix microservice
+        logstash_dateformat %Y-%m-%d
+      </store>
     </match>

@@ -1,25 +1,12 @@
 server:
   port: ${APPLICATION_PORT:0}
 
-logging:
-  level:
-    root: info
-    com.amsidh.mvc: info
-    com.amsidh.mvc.client.feign: debug
-    org.hibernate.SQL: debug
-
-feign:
-  client:
-    config:
-      default:
-        connect-timeout: 1000
-        read-timeout: 3000
-        logger-level: full
-
 spring:
   application:
     name: ms-address-service
   profiles:
+    include:
+      - common
     active: ${SPRING_PROFILES_ACTIVE:dev}
 
 
