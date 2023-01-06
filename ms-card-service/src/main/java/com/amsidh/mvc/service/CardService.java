@@ -1,6 +1,8 @@
 package com.amsidh.mvc.service;
 
+import com.amsidh.mvc.entity.Card;
 import com.amsidh.mvc.model.CardModel;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.util.List;
 
