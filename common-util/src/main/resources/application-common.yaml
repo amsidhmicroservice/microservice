@@ -40,3 +40,13 @@ spring:
         generate_statistics: true
         # Log slow queries
         session.events.log.LOG_QUERIES_SLOWER_THAN_MS: 1
+  data:
+    redis:
+      host: ${REDIS_HOST:redis.redis.svc.cluster.local}
+      port: ${REDIS_PORT:6379}
+      username: ${REDIS_USERNAME:userredis}
+      password: ${REDIS_PASSWORD:Redis@123}
+#      host: localhost
+#      port: 6379
+#      username: userredis
+#      password: Redis@123

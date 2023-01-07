@@ -11,4 +11,8 @@ data:
   DATABASE_NAME: microservice
   DATABASE_USERNAME: sa
   DATABASE_PASSWORD: ""
+  REDIS_HOST: "redis.redis.svc.cluster.local"
+  REDIS_PORT: "6379"
+  REDIS_USERNAME: "userredis"
+  REDIS_PASSWORD: "Redis@123"
 
