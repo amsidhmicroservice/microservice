@@ -11,23 +11,6 @@ build:
       context: ms-card-service
       jib:
         fromImage: openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
-    - image: docker.io/amsidhmicroservice/ms-account-service
-      context: ms-account-service
-      jib:
-        fromImage: openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
-    - image: docker.io/amsidhmicroservice/ms-location-service
-      context: ms-location-service
-      jib:
-        fromImage: openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
-    - image: docker.io/amsidhmicroservice/ms-address-service
-      context: ms-address-service
-      jib:
-        fromImage: openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
-
-    - image: docker.io/amsidhmicroservice/ms-person-service
-      context: ms-person-service
-      jib:
-        fromImage: openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
 
 deploy:
 #  kubectl:
@@ -39,14 +22,6 @@ deploy:
     releases:
     - name: ms-card-service-chart
       chartPath: helm/ms-card-service/
-    - name: ms-account-service-chart
-      chartPath: helm/ms-account-service/
-    - name: ms-location-service-chart
-      chartPath: helm/ms-location-service/
-    - name: ms-address-service-chart
-      chartPath: helm/ms-address-service/
-    - name: ms-person-service-chart
-      chartPath: helm/ms-person-service/
 
 profiles:
   # use the cloudbuild profile to build images using Google Cloud Build
