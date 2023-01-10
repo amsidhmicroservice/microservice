@@ -59,9 +59,9 @@ data:
         host quickstart-es-internal-http
         port 9200
         user elastic
-        password foI6q3o7v70W7921rSR9ywAQ
+        password 2K4zlo7oz4a4857m3VspAf1v
         #cloud_id 25622abc63444ebc814b306bfaea1009:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvJGRhN2FmMzgzMzVlNjQwMWM5OGI3YTMxN2E3NjM1NTQ1JDI2YTA1YjljM2Y1NjRhOWRhZDY0OTZmYTcyNDk4MjY4
-        #cloud_auth 'elastic:9e48tD7l5gH8ARa23ZBaIq19'
+        #cloud_auth 'elastic:2K4zlo7oz4a4857m3VspAf1v'
         scheme https
         ssl_verify false
     
