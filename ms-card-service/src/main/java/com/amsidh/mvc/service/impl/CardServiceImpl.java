@@ -21,6 +21,7 @@ public class CardServiceImpl implements CardService {
     private final CardRepository cardRepository;
     private final ObjectMapper objectMapper;
 
+
     @Override
     public CardModel saveCard(CardModel cardModel) {
         Card card = objectMapper.convertValue(cardModel, Card.class);
@@ -33,6 +34,7 @@ public class CardServiceImpl implements CardService {
         Card card = cardRepository.findById(cardId).orElseThrow(() -> new CardNotFoundException(String.format("Card with cardId %d not found", cardId)));
         return objectMapper.convertValue(card, CardModel.class);
     }
+
 
     @Override
     public CardModel updateCard(Long cardId, CardModel cardModel) {

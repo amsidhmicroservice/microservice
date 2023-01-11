@@ -18,3 +18,10 @@ Following command wait for pod to become ready.
 kubectl wait --namespace ingress-nginx --for=condition=ready pod --selector=app.kubernetes.io/component=controller --timeout=120s
 
 https://kubernetes.github.io/ingress-nginx/deploy/#docker-for-mac
+
+
+
+### For kubectl not able to pull images from know repository then please do the following steps:
+
+1. Uncheck >Docker Desktop-> Resource-> WSL Integration
+   ![docker.png](docker.png)
