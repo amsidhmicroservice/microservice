@@ -1,0 +1,25 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 0.0.5-SNAPSHOT
+description: A Helm chart for ms-location-service-chart
+name: ms-location-service-chart
+version: 0.0.5-SNAPSHOT
+
+...
+files:
+  ms-location-service-chart-0.0.5-SNAPSHOT.tgz: sha256:abd01ac372e8121593fd2d0ed739d8f4586c6ba0f0af080f1ad46140d9e1c254
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJjx+sICRAtXc6iRHwuDAAA3n4MAAVvLMh4wEjGCT1J9TCR/C+M
+displ0RrCfHozU2IEnJmiOOIocfG6GZtIFrRCMyd87zHl0sQBCTyZm5ecQ8XEA6n
+70pi68kiXTqkuggQUREL8jjsSpaWDxuWRzokdt7bx8+NxVS9/ZEqKEaLzXRgahOO
+VasL5L4ubpYS3RMv9+2lVJbD/WAYpS3YMB1eT/C9ueIW49o3lOrGsL8flKxfl7It
+hop+t/ftiFUUveLrKxHpOisXa7+7Klm1B1Vhy+pDRlT0C59nljvRUOSDP0oGPq3Y
++OuZqC9eTsgNw5kipzYLNphZTI95/Eb+0hz3KamIuxNaB5Kzf2wm3mfD+ecR8MHX
+md3r3NzozIgwRCcj4UWfNyDsrxJIGBYFVNHwJTtINgMa/mZkaraHOlLU4oDbseel
+lwTm1QgFE3PZSV5WJFLS4bQzB0xs2dDD5e3dTPNwB5oXg8TTuQhHw0iQQQxN60Yk
+hHmtG3N51jBHUE88CtqEwt0mPYzAtGLbyFu2W/XPXg==
+=c3ol
+-----END PGP SIGNATURE-----

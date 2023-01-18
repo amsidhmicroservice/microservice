@@ -1,6 +1,0 @@
-apiVersion: v1
-appVersion: 0.0.5-SNAPSHOT
-description: A Helm chart for ms-location-service
-name: ms-location-service
-version: 0.0.5-SNAPSHOT
-

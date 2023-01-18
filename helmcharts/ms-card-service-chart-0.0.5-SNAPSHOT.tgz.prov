@@ -1,0 +1,25 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 0.0.5-SNAPSHOT
+description: A Helm chart for ms-card-service-chart
+name: ms-card-service-chart
+version: 0.0.5-SNAPSHOT
+
+...
+files:
+  ms-card-service-chart-0.0.5-SNAPSHOT.tgz: sha256:82b3de9499a8edf1160a6f8a2af88bf976b641c9379af95050f9d5740835fe09
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJjx+rSCRAtXc6iRHwuDAAAyZQMAIW8dOZUDKPzUPpCyxMY8VLb
+ebvEVLAnFGdrb+EVWdfQv51LUXgJTHpjs4A/7KP/l+qjgKIIBv1zSM7+j/9exWZ7
+kHltECiyXJBfPnb94RNkqB6Sufmt7Hl6C/abeUd6OHJ7G3HyIm3RnNXfxKuce8dk
+esF5+tS6R/34/Oseef4L2DE2LwGi8kEla/4wBwum30nEvOwpFI47FB3e4weT/UKE
+5mnjIssYblDEbhEum4yMrhCCxlsMl/XvB+XSZcR+3F+IBjt60ZFr93WlLoG0Y18B
+xUmiwPiw2uwDfbTwXsa4ghmejeK150eeWf3YqD5B6lnACOmXGHSM3gGNTVy9zrRi
+DLSxqbxY12nlToyClkp+7EV7QxpEIz1ByujfrFFXNCO96X0A4bJb+Xs/GktVDxrG
+bm5HLd4fhwt30eLzuGiNq+VLegoaoMFIhQ9NmwSahbvcFQffucfgizc3F9KyP/hm
+pmtT5Zr8ZR5nuF2wvezPp04VZnD5EeTemlgDeLPESw==
+=lIt2
+-----END PGP SIGNATURE-----

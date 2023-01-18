@@ -1,0 +1,25 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+apiVersion: v1
+appVersion: 0.0.5-SNAPSHOT
+description: A Helm chart for ms-person-service-chart
+name: ms-person-service-chart
+version: 0.0.5-SNAPSHOT
+
+...
+files:
+  ms-person-service-chart-0.0.5-SNAPSHOT.tgz: sha256:33fe903daba9f0b3ce171879c44a9d48e61c0da18e82d10f04f30c1efdda3f59
+-----BEGIN PGP SIGNATURE-----
+
+wsDcBAEBCgAQBQJjx+s8CRAtXc6iRHwuDAAAj9UMABoO9r1GkhKVPczABS3Tenn3
+TgptlyVyQ5iah7HEcJqWP7Dg86Ofen0JA0hnB9bBQB6usr8gNl433NJxuPrVdTrv
+6ePzu0YmSK5O3shxcHCA/tWjZzzktFGy+DlkF+uz1xcoj/UOj6FR55va8H+qIxAF
+ZmJxSJ4UYgZ1z8wsK4cVDFo3TG1IZAmWm38Myeuz8ANG8b83cs3x2gC4JSnDYqVA
+Z9F02CkawzSS3tYiObxOcshb50kFXZ0UdeIXGT0qLEmPKCifMJTeovCwD9RJWvmW
+FcwZSIrUW8Yxu5bIq3LDnWbj2NWc++DIAJwo70I6u6LmruYJn9qiCECkTzYoKT5r
+jVaiwBnJ4460XdB6LU7BBoJfR2Pf62LFrH08fjJB05ve01uzeXG+pURPEs3e4KA9
+KGaa3EUL0iyQmpnDeE4i5O4lDaFVUzd/i8xhqZJJA6Jw2uh42d7DwtDO12JKDGaF
+e9YyFh3Mk8CdYBDb2zbr+vzndREXv6wgznsKEp0ttQ==
+=KLD8
+-----END PGP SIGNATURE-----

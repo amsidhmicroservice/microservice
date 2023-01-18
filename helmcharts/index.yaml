@@ -1,0 +1,53 @@
+apiVersion: v1
+entries:
+  ms-account-service-chart:
+  - apiVersion: v1
+    appVersion: 0.0.5-SNAPSHOT
+    created: "2023-01-18T18:22:02.3796523+05:30"
+    description: A Helm chart for ms-account-service-chart
+    digest: 30f19ece355cf9dbe7f591dbffdf1e4f4ce45c7066e689867c6083c5c54dcedf
+    name: ms-account-service-chart
+    urls:
+    - ms-account-service-chart-0.0.5-SNAPSHOT.tgz
+    version: 0.0.5-SNAPSHOT
+  ms-address-service-chart:
+  - apiVersion: v1
+    appVersion: 0.0.5-SNAPSHOT
+    created: "2023-01-18T18:22:02.3802003+05:30"
+    description: A Helm chart for ms-address-service-chart
+    digest: 10079b8c63354139b6d0608301e4f7cbd14e2ac530f55e1abeaf04e18f91a4dd
+    name: ms-address-service-chart
+    urls:
+    - ms-address-service-chart-0.0.5-SNAPSHOT.tgz
+    version: 0.0.5-SNAPSHOT
+  ms-card-service-chart:
+  - apiVersion: v1
+    appVersion: 0.0.5-SNAPSHOT
+    created: "2023-01-18T18:22:02.3802003+05:30"
+    description: A Helm chart for ms-card-service-chart
+    digest: 82b3de9499a8edf1160a6f8a2af88bf976b641c9379af95050f9d5740835fe09
+    name: ms-card-service-chart
+    urls:
+    - ms-card-service-chart-0.0.5-SNAPSHOT.tgz
+    version: 0.0.5-SNAPSHOT
+  ms-location-service-chart:
+  - apiVersion: v1
+    appVersion: 0.0.5-SNAPSHOT
+    created: "2023-01-18T18:22:02.3807393+05:30"
+    description: A Helm chart for ms-location-service-chart
+    digest: abd01ac372e8121593fd2d0ed739d8f4586c6ba0f0af080f1ad46140d9e1c254
+    name: ms-location-service-chart
+    urls:
+    - ms-location-service-chart-0.0.5-SNAPSHOT.tgz
+    version: 0.0.5-SNAPSHOT
+  ms-person-service-chart:
+  - apiVersion: v1
+    appVersion: 0.0.5-SNAPSHOT
+    created: "2023-01-18T18:22:02.3812804+05:30"
+    description: A Helm chart for ms-person-service-chart
+    digest: 33fe903daba9f0b3ce171879c44a9d48e61c0da18e82d10f04f30c1efdda3f59
+    name: ms-person-service-chart
+    urls:
+    - ms-person-service-chart-0.0.5-SNAPSHOT.tgz
+    version: 0.0.5-SNAPSHOT
+generated: "2023-01-18T18:22:02.3785255+05:30"
