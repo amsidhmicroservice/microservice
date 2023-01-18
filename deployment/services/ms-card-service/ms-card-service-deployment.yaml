@@ -24,7 +24,7 @@ spec:
         version: 0.0.5-SNAPSHOT
     spec:
       containers:
-        - image: ms-card-service
+        - image: amsidhmicroservice/ms-card-service
           imagePullPolicy: IfNotPresent
           name: card-ms
           ports:
