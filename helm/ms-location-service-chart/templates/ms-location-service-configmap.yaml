@@ -6,13 +6,15 @@ metadata:
   labels:
     app: location-ms-configmap
 data:
-  SPRING_PROFILES_ACTIVE: {{.Values.configmap.activeProfile}}
-  APPLICATION_PORT: "8080"
-  DATABASE_NAME: microservice
-  DATABASE_USERNAME: sa
-  DATABASE_PASSWORD: ""
-  REDIS_HOST: "redis.redis.svc.cluster.local"
-  REDIS_PORT: "6379"
-  REDIS_USERNAME: "myredis"
-  REDIS_PASSWORD: "Redis@123"
-  ZIPKIN_HOST: "zipkin-service.monitoring.svc.cluster.local"
+  SPRING_PROFILES_ACTIVE: {{.Values.configmap.SPRING_PROFILES_ACTIVE}}
+  APPLICATION_PORT: "{{.Values.configmap.APPLICATION_PORT}}"
+  DATABASE_NAME: {{.Values.configmap.DATABASE_NAME}}
+  DATABASE_USERNAME: {{.Values.configmap.DATABASE_USERNAME}}
+  DATABASE_PASSWORD: {{.Values.configmap.DATABASE_PASSWORD}}
+  REDIS_HOST: {{.Values.configmap.REDIS_HOST}}
+  REDIS_PORT: "{{.Values.configmap.REDIS_PORT}}"
+  REDIS_USERNAME: {{.Values.configmap.REDIS_USERNAME}}
+  REDIS_PASSWORD: {{.Values.configmap.REDIS_PASSWORD}}
+  ZIPKIN_HOST: {{.Values.configmap.ZIPKIN_HOST}}
+
+
