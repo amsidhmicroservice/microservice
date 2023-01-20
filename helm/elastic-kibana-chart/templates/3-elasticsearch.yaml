@@ -1,12 +1,11 @@
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
-  name: quickstart
-  namespace: elastic-system
+  name: {{.Values.deployment.name}}
 spec:
-  version: 8.5.3
+  version: {{.Values.deployment.imageName}}
   nodeSets:
     - name: default
-      count: 1
+      count: {{.Values.deployment.numberOfReplicas}}
       config:
         node.store.allow_mmap: false

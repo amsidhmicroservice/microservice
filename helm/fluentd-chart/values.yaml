@@ -1,0 +1,6 @@
+deployment:
+  imageName: aimvector/fluentd-demo
+  tagName: latest
+  name: quickstart
+  numberOfReplicas: 1
+

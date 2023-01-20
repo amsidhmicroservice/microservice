@@ -671,7 +671,7 @@ webhooks:
     - CREATE
     - UPDATE
     resources:
-    - kibanas
+    - kibana
 - clientConfig:
     caBundle: Cg==
     service:

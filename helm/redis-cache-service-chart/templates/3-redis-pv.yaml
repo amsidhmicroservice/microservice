@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-pv1
+spec:
+  storageClassName: {{.Values.persistent.spec.storageClassName}}
+  capacity:
+    storage: {{.Values.persistent.spec.storageCapacity}}
+  accessModes:
+    - {{.Values.persistent.spec.accessModes}}
+  hostPath:
+    path: {{.Values.persistent.spec.hostPath.path1}}
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-pv2
+spec:
+  storageClassName: {{.Values.persistent.spec.storageClassName}}
+  capacity:
+    storage: {{.Values.persistent.spec.storageCapacity}}
+  accessModes:
+    - {{.Values.persistent.spec.accessModes}}
+  hostPath:
+    path: {{.Values.persistent.spec.hostPath.path2}}
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-pv3
+spec:
+  storageClassName: {{.Values.persistent.spec.storageClassName}}
+  capacity:
+    storage: {{.Values.persistent.spec.storageCapacity}}
+  accessModes:
+    - {{.Values.persistent.spec.accessModes}}
+  hostPath:
+    path: {{.Values.persistent.spec.hostPath.path3}}

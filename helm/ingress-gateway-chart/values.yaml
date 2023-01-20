@@ -1,0 +1,23 @@
+namespace: ingress-nginx
+
+gateway:
+  name: ingress-gateway
+  ingress:
+    class: nginx
+host:
+  name: spring.microservice.com
+  port: 80
+  pathType: ImplementationSpecific
+  service:
+
+    name:
+      card: ms-card-service
+      account: ms-account-service
+      location: ms-location-service
+      address: ms-address-service
+      person: ms-person-service
+      currencyExchange: currency-exchange
+      currencyConversion: currency-conversion
+
+
+

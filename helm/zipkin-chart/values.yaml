@@ -1,0 +1,16 @@
+namespace: monitoring
+deployment:
+  imageName: openzipkin/zipkin
+  tagName: latest
+  name: zipkin
+  port: 9411
+  portName: zipkin-http
+  requestedCpu: 200m
+  numberOfReplicas: 1
+  restartPolicy: Always
+  minReadySeconds: 60
+
+service:
+  type: LoadBalancer
+  protocolType: TCP
+

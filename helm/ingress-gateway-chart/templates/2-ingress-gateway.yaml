@@ -1,0 +1,77 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{.Values.gateway.name}}
+  annotations:
+    kubernetes.io/ingress.class: {{.Values.gateway.ingress.class}}
+    nginx.ingress.kubernetes.io/use-regex: "true"
+
+spec:
+  rules:
+    - host: {{.Values.host.name}}
+      http:
+        paths:
+          - path: /cards/*
+            pathType: {{.Values.host.pathType}}
+            backend:
+              service:
+                name: {{.Values.host.service.name.card}}
+                port:
+                  number: {{.Values.host.port}}
+
+          - path: /accounts/*
+            pathType: {{.Values.host.pathType}}
+            backend:
+              service:
+                name: {{.Values.host.service.name.account}}
+                port:
+                  number: {{.Values.host.port}}
+
+          - path: /locations/*
+            pathType: {{.Values.host.pathType}}
+            backend:
+              service:
+                name: {{.Values.host.service.name.location}}
+                port:
+                  number: {{.Values.host.port}}
+
+          - path: /addresses/*
+            pathType: {{.Values.host.pathType}}
+            backend:
+              service:
+                name: {{.Values.host.service.name.address}}
+                port:
+                  number: {{.Values.host.port}}
+
+          - path: /persons/*
+            pathType: {{.Values.host.pathType}}
+            backend:
+              service:
+                name: {{.Values.host.service.name.person}}
+                port:
+                  number: {{.Values.host.port}}
+
+          - path: /currency-conversion/*
+            pathType: {{.Values.host.pathType}}
+            backend:
+              service:
+                name: {{.Values.host.service.name.currencyConversion}}
+                port:
+                  number: 8282
+
+          - path: /currency-exchange/*
+            pathType: {{.Values.host.pathType}}
+            backend:
+              service:
+                name: {{.Values.host.service.name.currencyExchange}}
+                port:
+                  number: 8181
+
+          - path: /
+            pathType: {{.Values.host.pathType}}
+            backend:
+              service:
+                name: {{.Values.host.service.name.person}}
+                port:
+                  number: {{.Values.host.port}}
+
