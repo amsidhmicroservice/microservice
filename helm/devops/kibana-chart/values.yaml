@@ -1,0 +1,7 @@
+deployment:
+  imageName: 8.5.3
+  name: quickstart
+  numberOfReplicas: 1
+
+service:
+  type: LoadBalancer

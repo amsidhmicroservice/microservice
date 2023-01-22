@@ -1,0 +1,16 @@
+---
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: {{.Values.deployment.name}}
+spec:
+  version: {{.Values.deployment.imageName}}
+  nodeSets:
+    - name: default
+      count: {{.Values.deployment.numberOfReplicas}}
+      config:
+        node.store.allow_mmap: false
+  http:
+    service:
+      spec:
+        type: {{.Values.service.type}}

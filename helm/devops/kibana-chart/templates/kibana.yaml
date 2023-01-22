@@ -1,0 +1,14 @@
+---
+apiVersion: kibana.k8s.elastic.co/v1
+kind: Kibana
+metadata:
+  name: {{.Values.deployment.name}}
+spec:
+  version: {{.Values.deployment.imageName}}
+  count: {{.Values.deployment.numberOfReplicas}}
+  elasticsearchRef:
+    name: {{.Values.deployment.name}}
+  http:
+    service:
+      spec:
+        type: {{.Values.service.type}}
