@@ -6,7 +6,7 @@ metadata:
 stringData:
   username: elastic    # required field for kubernetes.io/basic-auth
   password: Elastic@123 # required field for kubernetes.io/basic-auth
-  roles: kibana_admin,ingest_admin  # optional, not part of kubernetes.io/basic-auth
+  roles: ingest_admin,kibana_admin  # optional, not part of kubernetes.io/basic-auth
 
 ---
 apiVersion: elasticsearch.k8s.elastic.co/v1
