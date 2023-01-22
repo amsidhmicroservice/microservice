@@ -13,12 +13,13 @@ data:
         @type stdout
       </match>
     </label>
-    
+
     <source>
       @type tail
       @id in_tail_container_logs
-      path /var/log/containers/counter*.log,/var/log/containers/*ms*.log,/var/log/containers/currency*.log
-      pos_file /var/log/fluentd-containers.log.pos
+      path {{join "," .Values.fluentd.source.inputPaths}}
+      exclude_path {{join "," .Values.fluentd.source.excludePaths}}
+      pos_file {{.Values.fluentd.source.posFilePath}}
       tag kubernetes.*
       read_from_head true
       <parse>
@@ -34,40 +35,40 @@ data:
         </pattern>
       </parse>
     </source>
-    
+
     <filter kubernetes.**>
       @id filter_kubernetes_metadata
       @type kubernetes_metadata
     </filter>
-    
+
     <match kubernetes.**>
       @type copy
       <store>
         @type file
         path /data/output
       </store>
-    
+
       #<store>
       #  @type stdout
       #</store>
-    
+
       <store>
         @type elasticsearch
         @log_level info
         include_tag_key true
-    
-        host quickstart-es-internal-http
-        port 9200
-        user elastic
-        password 0Fb1RVS2EtPi2r5T7NQB2616
+
+        host {{.Values.elasticsearch.host}}.svc.cluster.local
+        port {{.Values.elasticsearch.hostPort}}
+        user {{.Values.elasticsearch.username}}
+        password {{.Values.elasticsearch.password}}
         #cloud_id 25622abc63444ebc814b306bfaea1009:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvJGRhN2FmMzgzMzVlNjQwMWM5OGI3YTMxN2E3NjM1NTQ1JDI2YTA1YjljM2Y1NjRhOWRhZDY0OTZmYTcyNDk4MjY4
         #cloud_auth 'elastic:2K4zlo7oz4a4857m3VspAf1v'
-        scheme https
-        ssl_verify false
-    
+        scheme {{.Values.elasticsearch.scheme}}
+        ssl_verify {{.Values.elasticsearch.ssl_verify}}
+
         reload_connections true
         logstash_format true
-        logstash_prefix microservice
+        logstash_prefix {{.Values.elasticsearch.logstash_prefix}}
         logstash_dateformat %Y-%m-%d
       </store>
     </match>

@@ -4,3 +4,23 @@ deployment:
   name: quickstart
   numberOfReplicas: 1
 
+fluentd:
+  source:
+    posFilePath: "/var/log/fluentd-containers.log.pos"
+    inputPaths:
+      - "/var/log/containers/counter*.log"
+      - "/var/log/containers/*ms*.log"
+      - "/var/log/containers/currency*.log"
+    excludePaths:
+      - "*fluentd*.log"
+      - "*kibana*.log"
+      - "*elastic*.log"
+
+elasticsearch:
+  host: quickstart-es-internal-http.monitoring
+  hostPort: 9200
+  username: elastic
+  password: Elastic@123
+  scheme: https
+  ssl_verify: false
+  logstash_prefix: microservice

@@ -33,7 +33,22 @@ helm package --sign --key amsidhlokhande@gmail.com --keyring C:\Users\amsid\AppD
 helm show all oci://registry-1.docker.io/amsidhmicroservice/ms-card-service-chart --version 0.0.5-SNAPSHOT
 
 
+### Prior to install helm chart of elastic and kibana of quickstart we have to install the crd using kubectl command
+for elastic-kibana quickstart crds are located in [1-crds.yaml](deployment%2Fdevtool%2Fefk%2Felasticsearch-kibana%2F1-crds.yaml) 
+and [2-operator.yaml](deployment%2Fdevtool%2Fefk%2Felasticsearch-kibana%2F2-operator.yaml)
+OR
+1) kubectl create -f https://download.elastic.co/downloads/eck/2.5.0/crds.yaml
+2) kubectl apply -f https://download.elastic.co/downloads/eck/2.5.0/operator.yaml
+
+
+Display secrets in plain text
+kubectl get secret secret-basic-auth --template={{.data.users_roles}} | base64 --decode
+
+kubectl get secret quickstart-kibana-user --template={{.stringData.users_roles}} | base64 --decode
 
 
 
+kubectl get secret kibana-elasticsearch-credentials --template={{.elasticsearch.password}} | base64 --decode
 
+
+quickstart-kibana-user

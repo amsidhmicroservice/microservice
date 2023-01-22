@@ -4,8 +4,9 @@ https://phoenixnap.com/kb/elasticsearch-helm-chart
 ###Using ECK
 Youtube video link -> https://www.youtube.com/watch?v=qjnT0pU0IRo
 https://www.elastic.co/guide/en/cloud-on-k8s/2.5/k8s-deploy-kibana.html
+https://www.elastic.co/guide/index.html#
 1) Install crds  
- >> kubectl apply -f crds
+ >> kubectl apply -f crds.yaml
 check now
  > kubectl get kibana
  > kubectl get elasticsearch
@@ -29,3 +30,5 @@ PASSWORD=$(kubectl get secret quickstart-es-elastic-user -o go-template='{{.data
 kubectl port-forward service/quickstart-es-http 9200
 curl -u "elastic:$PASSWORD" -k "https://localhost:9200"
 
+docker.elastic.co/elasticsearch/elasticsearch:8.5.3
+docker.elastic.co/kibana/kibana:8.5.3

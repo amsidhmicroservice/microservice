@@ -1,6 +1,0 @@
-apiVersion: v1
-appVersion: 0.0.1-SNAPSHOT
-description: A Helm chart for elastic-kibana-chart
-name: elastic-kibana-chart
-version: 1.0.0
-
