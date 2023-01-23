@@ -4,7 +4,7 @@ kind: Service
 metadata:
   labels:
     app: ms-account-service
-    version: 0.0.5-SNAPSHOT
+    version: 0.0.1-SNAPSHOT
   name: ms-account-service
 spec:
   ports:
@@ -14,5 +14,5 @@ spec:
       protocol: TCP
   selector:
     app: account-ms
-    version: 0.0.5-SNAPSHOT
+    version: 0.0.1-SNAPSHOT
   type: NodePort

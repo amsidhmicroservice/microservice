@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - image: {{.Values.deployment.imageName}}
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: {{.Values.deployment.imagePullPolicy}}
           name: {{.Values.deployment.name}}
           ports:
             - name: location-http

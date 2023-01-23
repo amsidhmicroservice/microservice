@@ -43,7 +43,7 @@
                 </threadName>
 
                 <arguments>
-                    <includeNonStructuredArguments>true</includeNonStructuredArguments>
+                    <includeNonStructuredArguments>false</includeNonStructuredArguments>
                 </arguments>
                 <logstashMarkers/>
                 <pattern>

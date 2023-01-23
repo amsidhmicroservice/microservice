@@ -2,11 +2,11 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: fluentd
-  
   labels:
     k8s-app: fluentd-logging
     version: v1
 spec:
+
   selector:
     matchLabels:
       k8s-app: fluentd-logging
