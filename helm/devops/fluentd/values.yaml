@@ -1,92 +1,13 @@
-forwarder:
-  enabled: true
-  livenessProbe:
-    enabled: false
-  readinessProbe:
-    enabled: false
-  configMapFiles:
-    fluentd.conf: |
-      ################################################################
-      # This source gets all logs from local docker host
-      <label @FLUENT_LOG>
-        <match fluent.**>
-          @type null
-        </match>
-      </label>
-      
-      <source>
-        @type tail
-        @id in_tail_container_logs
-        path /var/log/containers/counter*.log,/var/log/containers/*ms*.log,/var/log/containers/currency*.log
-        exclude_path /var/log/containers/*fluentd*.log,/var/log/containers/*kibana*.log,/var/log/containers/*elastic*.log
-        pos_file /opt/bitnami/fluentd/logs/buffers/fluentd-docker.pos
-        tag kubernetes.*
-        read_from_head true
-        <parse>
-          @type multi_format
-          <pattern>
-            format json
-            time_key @timestamp
-            time_format %Y-%m-%dT%H:%M:%S.%NZ
-          </pattern>
-          <pattern>
-            format none
-            message_key logMessage
-          </pattern>
-        </parse>
-      </source>
-      
-      <filter kubernetes.**>
-        @id filter_kubernetes_metadata
-        @type kubernetes_metadata
-      </filter>
-      
-      <match kubernetes.**>
-        @type copy
-        <store>
-          @type file
-          path /data/output
-        </store>
-      
-        #<store>
-        #  @type stdout
-        #</store>
-      
-        <store>
-          @type elasticsearch
-          @log_level info
-          include_tag_key true
-      
-          host quickstart-es-internal-http.monitoring.svc.cluster.local
-          port 9200
-          user elastic
-          password 2N272Qb3bIfbc7j6017yPXaW
-          #cloud_id 25622abc63444ebc814b306bfaea1009:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvJGRhN2FmMzgzMzVlNjQwMWM5OGI3YTMxN2E3NjM1NTQ1JDI2YTA1YjljM2Y1NjRhOWRhZDY0OTZmYTcyNDk4MjY4
-          #cloud_auth 'elastic:2K4zlo7oz4a4857m3VspAf1v'
-          scheme https
-          ssl_verify false
-      
-          reload_connections true
-          logstash_format true
-          logstash_prefix microservice
-          logstash_dateformat %Y-%m-%d
-        </store>
-      </match>
+configmap:
+  elastic:
+    host: quickstart-es-internal-http.monitoring.svc.cluster.local
+    port: 9200
+    username: elastic
+    password: "eI7z0Mjr216ja373y6PAiI4t"
+
+  input:
+    sourcePath: /var/log/containers/counter*.log,/var/log/containers/ms*.log,/var/log/containers/currency*.log
+    excludePath: '"/var/log/containers/fluent*.log","/var/log/containers/*kibana*.log","/var/log/containers/*elastic*.log"'
+    posFile: /var/log/fluentd-containers.log.pos
 
 
-
-aggregator:
-  ## @param aggregator.enabled Enable Fluentd aggregator statefulset
-  ##
-  enabled: false
-
-metrics:
-  ## @param metrics.enabled Enable the export of Prometheus metrics
-  ##
-  enabled: false
-## Enable internal SSL/TLS encryption
-##
-tls:
-  ## @param tls.enabled Enable TLS/SSL encrytion for internal communications
-  ##
-  enabled: false

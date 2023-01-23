@@ -8,7 +8,8 @@
 
 ### Fluentd: 
    Get the password of elastic user and update the fluent/values/yaml file in order to start the fluentd
-   helm upgrade --install fluentd-release bitnami/fluentd -f fluentd\values.yaml
+   helm upgrade --install fluentd-release fluentd
+
 
 ### Redis Cache
   helm upgrade --install redis-release redis-cache-service-chart --namespace redis --create-namespace
