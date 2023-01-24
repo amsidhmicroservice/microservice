@@ -6,8 +6,13 @@ configmap:
     password: "eI7z0Mjr216ja373y6PAiI4t"
 
   input:
-    sourcePath: /var/log/containers/counter*.log,/var/log/containers/ms*.log,/var/log/containers/currency*.log
+    source:
+      service:
+        card: /var/log/containers/ms-card-service*.log
+        account: /var/log/containers/ms-account-service*.log
+        location: /var/log/containers/ms-location-service*.log
+        address: /var/log/containers/ms-address-service*.log
+        person: /var/log/containers/ms-person-service*.log
     excludePath: '"/var/log/containers/fluent*.log","/var/log/containers/*kibana*.log","/var/log/containers/*elastic*.log"'
-    posFile: /var/log/fluentd-containers.log.pos
 
 

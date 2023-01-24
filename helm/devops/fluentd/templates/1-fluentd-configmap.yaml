@@ -6,20 +6,42 @@ metadata:
   name: fluentd-config
 data:
   fluent.conf: |-
-    ################################################################
-    # This source gets all logs from local docker host
+    ###########################Golbal FluentD Configuration#####################################
+    @include system-fluent.conf
+    @include skip-fluent-log.conf
+    @include input-source-fluent.conf
+    @include common-filter-fluent.conf
+    @include output-multiple-destination-fluent.conf
+
+  system-fluent.conf: |-
+    <system>
+      root_dir /tmp/fluentd-buffers/
+    </system>
+
+  skip-fluent-log.conf: |-
+    ####Skip all fluentd demonset logs####
     <label @FLUENT_LOG>
-      <match fluent.*>
+      <match fluent.**>
         @type stdout
       </match>
     </label>
-    
-    <source>
+
+
+  input-source-fluent.conf: |-
+    ########Fluentd micro service configuration#######
+    @include ms-card-service.conf
+    @include ms-account-service.conf
+    @include ms-location-service.conf
+    @include ms-address-service.conf
+    @include ms-person-service.conf
+
+  ms-card-service.conf: |-
+    <source ms-card-service.**>
       @type tail
-      @id in_tail_container_logs
-      path {{.Values.configmap.input.sourcePath}}
+      @id in_tail_card_container_logs
+      path {{.Values.configmap.input.source.service.card}}
       exclude_path [{{.Values.configmap.input.excludePath}}]
-      pos_file {{.Values.configmap.input.posFile}}
+      pos_file /var/log/pos-fluentd-card.log.pos
       tag kubernetes.*
       read_from_head true
       <parse>
@@ -35,12 +57,105 @@ data:
         </pattern>
       </parse>
     </source>
-    
+
+  ms-account-service.conf: |-
+    <source ms-account-service.**>
+      @type tail
+      @id in_tail_account_container_logs
+      path {{.Values.configmap.input.source.service.account}}
+      exclude_path [{{.Values.configmap.input.excludePath}}]
+      pos_file /var/log/pos-fluentd-account.log.pos
+      tag kubernetes.*
+      read_from_head true
+      <parse>
+        @type multi_format
+        <pattern>
+          format json
+          time_key @timestamp
+          time_format %Y-%m-%dT%H:%M:%S.%NZ
+        </pattern>
+        <pattern>
+          format none
+          message_key logMessage
+        </pattern>
+      </parse>
+    </source>
+
+  ms-location-service.conf: |-
+    <source ms-location-service.**>
+      @type tail
+      @id in_tail_location_container_logs
+      path {{.Values.configmap.input.source.service.location}}
+      exclude_path [{{.Values.configmap.input.excludePath}}]
+      pos_file /var/log/pos-fluentd-location.log.pos
+      tag kubernetes.*
+      read_from_head true
+      <parse>
+        @type multi_format
+        <pattern>
+          format json
+          time_key @timestamp
+          time_format %Y-%m-%dT%H:%M:%S.%NZ
+        </pattern>
+        <pattern>
+          format none
+          message_key logMessage
+        </pattern>
+      </parse>
+    </source>
+
+  ms-address-service.conf: |-
+    <source ms-address-service.**>
+      @type tail
+      @id in_tail_address_container_logs
+      path {{.Values.configmap.input.source.service.address}}
+      exclude_path [{{.Values.configmap.input.excludePath}}]
+      pos_file /var/log/pos-fluentd-address.log.pos
+      tag kubernetes.*
+      read_from_head true
+      <parse>
+        @type multi_format
+        <pattern>
+          format json
+          time_key @timestamp
+          time_format %Y-%m-%dT%H:%M:%S.%NZ
+        </pattern>
+        <pattern>
+          format none
+          message_key logMessage
+        </pattern>
+      </parse>
+    </source>
+
+  ms-person-service.conf: |-
+    <source ms-person-service.**>
+      @type tail
+      @id in_tail_person_container_logs
+      path {{.Values.configmap.input.source.service.person}}
+      exclude_path [{{.Values.configmap.input.excludePath}}]
+      pos_file /var/log/pos-fluentd-person.log.pos
+      tag kubernetes.*
+      read_from_head true
+      <parse>
+        @type multi_format
+        <pattern>
+          format json
+          time_key @timestamp
+          time_format %Y-%m-%dT%H:%M:%S.%NZ
+        </pattern>
+        <pattern>
+          format none
+          message_key logMessage
+        </pattern>
+      </parse>
+    </source>
+
+  common-filter-fluent.conf: |-
+    #################Common Filter Configuration#######################
     <filter kubernetes.**>
       @id filter_kubernetes_metadata
       @type kubernetes_metadata
     </filter>
-    
     <filter kubernetes.**>
       @type parser
       key_name log
@@ -50,35 +165,43 @@ data:
         @type json
       </parse>
     </filter>
-    
+
+
+  output-multiple-destination-fluent.conf: |-
     <match kubernetes.**>
       @type copy
+      ### Send logs to file
       <store>
         @type file
         path /data/output
       </store>
-    
+      ### Send logs to console
       <store>
         @type stdout
       </store>
-    
+
+      ###Send log to elasticsearch
       <store>
         @type elasticsearch
         @log_level info
         include_tag_key true
-    
-        host {{.Values.configmap.elastic.host}}
-        port {{.Values.configmap.elastic.port}}
-        user {{.Values.configmap.elastic.username}}
-        password {{.Values.configmap.elastic.password}}
+
+        host quickstart-es-internal-http.monitoring.svc.cluster.local
+        port 9200
+        user elastic
+        password eI7z0Mjr216ja373y6PAiI4t
         #cloud_id 25622abc63444ebc814b306bfaea1009:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvJGRhN2FmMzgzMzVlNjQwMWM5OGI3YTMxN2E3NjM1NTQ1JDI2YTA1YjljM2Y1NjRhOWRhZDY0OTZmYTcyNDk4MjY4
         #cloud_auth 'elastic:2K4zlo7oz4a4857m3VspAf1v'
         scheme https
         ssl_verify false
-    
+
         reload_connections true
         logstash_format true
-        logstash_prefix microservice
+        logstash_prefix ${service-name}
         logstash_dateformat %Y-%m-%d
+        request_timeout 30s
+        <buffer tag, service-name>
+          @type memory
+        </buffer>
       </store>
     </match>
