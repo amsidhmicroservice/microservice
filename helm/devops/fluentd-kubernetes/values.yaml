@@ -5,11 +5,11 @@ configmap:
     host: "quickstart-es-internal-http.monitoring.svc.cluster.local"
     port: 9200
     username: elastic
-    password: "eI7z0Mjr216ja373y6PAiI4t"
+    password: "k34Kjqwb40759SB6THZ6ApG5"
     schema: https
     ssl_verify: false
     ssl_version: TLSv1_2
-    logstash_prefix: ms-${record['kubernetes']['container_name']}
+    logstash_prefix: ${record['kubernetes']['container_name']}
 
   input:
     source:

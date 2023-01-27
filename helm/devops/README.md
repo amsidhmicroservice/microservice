@@ -1,11 +1,13 @@
-### For installing the helm chart of elasticsearch and Kibana we need to install ECK operator and CRDs
+## Adding elastic repository in helm
 First add the helm.elastic.co repo to helm local repository
 helm repo add elastic https://helm.elastic.co
-Check with 
+helm repo update
+Check with
 helm repo ls
 
-helm upgrade --install elastic-operator elastic/eck-operator -n elastic-system --create-namespace
+### For installing the helm chart of elasticsearch and Kibana we need to install ECK operator and CRDs
 helm upgrade --install elastic-operator elastic/eck-operator-crds -n elastic-system --create-namespace --force
+helm upgrade --install elastic-operator elastic/eck-operator -n elastic-system --create-namespace
 
 ### ElasticSearch:
 #Pull elasticsearch image with required version mentioned in values.yaml file
@@ -24,7 +26,7 @@ docker pull docker.elastic.co/kibana/kibana:6.8.23
    Get the password of elastic user and update the fluent/values/yaml file in order to start the fluentd
    helm upgrade --install fluentd-release fluentd
    OR
-   docker pull fluent/fluent-kubernetes-daemonset:v1.14.5-debian-elasticsearch7-1.1
+   docker pull fluent/fluentd-kubernetes-daemonset:v1.14.5-debian-elasticsearch7-1.1
    helm upgrade --install fluentd-release fluentd-kubernetes --namespace monitoring --create-namespace 
 
 ### Redis Cache

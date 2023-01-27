@@ -37,7 +37,7 @@ logging:
     # Log cache operations
     org.hibernate.cache: debug
     # Logging Configuration for Production set the logging.level.org.hibernate: ERROR
-    io.lettuce: trace
+    io.lettuce: error
 
 spring:
   jpa:

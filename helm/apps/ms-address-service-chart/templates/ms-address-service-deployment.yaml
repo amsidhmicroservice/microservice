@@ -24,7 +24,7 @@ spec:
         version: {{.Values.version}}
     spec:
       containers:
-        - image: {{.Values.deployment.imageName}}
+        - image: {{.Values.deployment.imageName}}:{{.Values.deployment.imageTag}}
           imagePullPolicy: {{.Values.deployment.imagePullPolicy}}
           name: {{.Values.deployment.name}}
           ports:
@@ -41,18 +41,18 @@ spec:
               path: "/actuator/health/liveness"
               port: 8080
             failureThreshold: 5
-            periodSeconds: 30
-            initialDelaySeconds: 180
-            timeoutSeconds: 30
+            periodSeconds: 10
+            initialDelaySeconds: 20
+            timeoutSeconds: 10
             successThreshold: 1
           readinessProbe:
             httpGet:
               path: "/actuator/health/readiness"
               port: 8080
-            failureThreshold: 10
-            periodSeconds: 120
-            initialDelaySeconds: 240
-            timeoutSeconds: 30
+            failureThreshold: 5
+            periodSeconds: 10
+            initialDelaySeconds: 20
+            timeoutSeconds: 10
             successThreshold: 1
 
           resources:

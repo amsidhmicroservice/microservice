@@ -1,8 +1,9 @@
 namespace: default
-version: 0.0.1-SNAPSHOT
+version: 0.0.2-SNAPSHOT
 
 deployment:
   imageName: docker.io/amsidhmicroservice/ms-address-service
+  imageTag: 0.0.2-SNAPSHOT
   name: ms-address-service
   numberOfReplicas: 1
   imagePullPolicy: Always

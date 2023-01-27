@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: person-ms
-    version: 0.0.1-SNAPSHOT
+    version: 0.0.2-SNAPSHOT
   name: person-ms
   namespace: default
 spec:
@@ -21,7 +21,7 @@ spec:
     metadata:
       labels:
         app: person-ms
-        version: 0.0.1-SNAPSHOT
+        version: 0.0.2-SNAPSHOT
     spec:
       containers:
         - image: ms-person-service
@@ -41,18 +41,18 @@ spec:
               path: "/actuator/health/liveness"
               port: 8080
             failureThreshold: 5
-            periodSeconds: 30
-            initialDelaySeconds: 180
-            timeoutSeconds: 30
+            periodSeconds: 10
+            initialDelaySeconds: 20
+            timeoutSeconds: 10
             successThreshold: 1
           readinessProbe:
             httpGet:
               path: "/actuator/health/readiness"
               port: 8080
-            failureThreshold: 10
-            periodSeconds: 120
-            initialDelaySeconds: 240
-            timeoutSeconds: 30
+            failureThreshold: 5
+            periodSeconds: 10
+            initialDelaySeconds: 20
+            timeoutSeconds: 10
             successThreshold: 1
 
           resources:
