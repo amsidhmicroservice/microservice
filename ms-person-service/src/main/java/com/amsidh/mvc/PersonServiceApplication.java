@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.core.env.Environment;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.List;
 public class PersonServiceApplication implements CommandLineRunner {
 
     private final PersonRepository personRepository;
+    private final Environment environment;
 
     public static void main(String[] args) {
         SpringApplication.run(PersonServiceApplication.class, args);
@@ -26,6 +28,7 @@ public class PersonServiceApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        log.info("Redis Database password and username are {}:{}", environment.getProperty("spring.data.redis.password"), environment.getProperty("spring.data.redis.username"));
         log.info("Cleaning Person table");
         personRepository.deleteAll();
         log.info("Loading sample data in person table");

@@ -5,6 +5,7 @@ metadata:
     app.kubernetes.io/instance: ingress-nginx
     app.kubernetes.io/name: ingress-nginx
   name: {{.Values.namespace}}
+
 ---
 apiVersion: v1
 automountServiceAccountToken: true
@@ -17,7 +18,7 @@ metadata:
     app.kubernetes.io/part-of: ingress-nginx
     app.kubernetes.io/version: 1.5.1
   name: ingress-nginx
-  namespace: ingress-nginx
+  namespace: {{.Values.namespace}}
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -29,7 +30,7 @@ metadata:
     app.kubernetes.io/part-of: ingress-nginx
     app.kubernetes.io/version: 1.5.1
   name: ingress-nginx-admission
-  namespace: ingress-nginx
+  namespace: {{.Values.namespace}}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -41,7 +42,7 @@ metadata:
     app.kubernetes.io/part-of: ingress-nginx
     app.kubernetes.io/version: 1.5.1
   name: ingress-nginx
-  namespace: ingress-nginx
+  namespace: {{.Values.namespace}}
 rules:
   - apiGroups:
       - ""
@@ -146,7 +147,7 @@ metadata:
     app.kubernetes.io/part-of: ingress-nginx
     app.kubernetes.io/version: 1.5.1
   name: ingress-nginx-admission
-  namespace: ingress-nginx
+  namespace: {{.Values.namespace}}
 rules:
   - apiGroups:
       - ""
@@ -266,7 +267,7 @@ metadata:
     app.kubernetes.io/part-of: ingress-nginx
     app.kubernetes.io/version: 1.5.1
   name: ingress-nginx
-  namespace: ingress-nginx
+  namespace: {{.Values.namespace}}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -274,7 +275,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: ingress-nginx
-    namespace: ingress-nginx
+    namespace: {{.Values.namespace}}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -286,7 +287,7 @@ metadata:
     app.kubernetes.io/part-of: ingress-nginx
     app.kubernetes.io/version: 1.5.1
   name: ingress-nginx-admission
-  namespace: ingress-nginx
+  namespace: {{.Values.namespace}}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -294,7 +295,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: ingress-nginx-admission
-    namespace: ingress-nginx
+    namespace: {{.Values.namespace}}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -312,7 +313,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: ingress-nginx
-    namespace: ingress-nginx
+    namespace: {{.Values.namespace}}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -331,7 +332,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: ingress-nginx-admission
-    namespace: ingress-nginx
+    namespace: {{.Values.namespace}}
 ---
 apiVersion: v1
 data:
@@ -345,7 +346,7 @@ metadata:
     app.kubernetes.io/part-of: ingress-nginx
     app.kubernetes.io/version: 1.5.1
   name: ingress-nginx-controller
-  namespace: ingress-nginx
+  namespace: {{.Values.namespace}}
 ---
 apiVersion: v1
 kind: Service
@@ -357,7 +358,7 @@ metadata:
     app.kubernetes.io/part-of: ingress-nginx
     app.kubernetes.io/version: 1.5.1
   name: ingress-nginx-controller
-  namespace: ingress-nginx
+  namespace: {{.Values.namespace}}
 spec:
   externalTrafficPolicy: Local
   ipFamilies:
@@ -390,7 +391,7 @@ metadata:
     app.kubernetes.io/part-of: ingress-nginx
     app.kubernetes.io/version: 1.5.1
   name: ingress-nginx-controller-admission
-  namespace: ingress-nginx
+  namespace: {{.Values.namespace}}
 spec:
   ports:
     - appProtocol: https
@@ -413,7 +414,7 @@ metadata:
     app.kubernetes.io/part-of: ingress-nginx
     app.kubernetes.io/version: 1.5.1
   name: ingress-nginx-controller
-  namespace: ingress-nginx
+  namespace: {{.Values.namespace}}
 spec:
   minReadySeconds: 0
   revisionHistoryLimit: 10
@@ -525,7 +526,7 @@ metadata:
     app.kubernetes.io/part-of: ingress-nginx
     app.kubernetes.io/version: 1.5.1
   name: ingress-nginx-admission-create
-  namespace: ingress-nginx
+  namespace: {{.Values.namespace}}
 spec:
   template:
     metadata:
@@ -572,7 +573,7 @@ metadata:
     app.kubernetes.io/part-of: ingress-nginx
     app.kubernetes.io/version: 1.5.1
   name: ingress-nginx-admission-patch
-  namespace: ingress-nginx
+  namespace: {{.Values.namespace}}
 spec:
   template:
     metadata:
@@ -640,7 +641,7 @@ webhooks:
     clientConfig:
       service:
         name: ingress-nginx-controller-admission
-        namespace: ingress-nginx
+        namespace: {{.Values.namespace}}
         path: /networking/v1/ingresses
     failurePolicy: Fail
     matchPolicy: Equivalent

@@ -6,12 +6,12 @@ metadata:
     app: {{.Values.service.name}}
     version: {{.Values.version}}
   name: {{.Values.service.name}}
+  namespace: {{.Values.namespace}}
 spec:
   ports:
-    - name: card-http
-      port: 80
-      targetPort: 8080
-      protocol: TCP
+    - port: {{default "80" .Values.service.port}}
+      targetPort: {{default "8080" .Values.service.targetPort}}
+      protocol: {{default "TCP" .Values.service.protocol}}
   selector:
     app: {{.Values.deployment.name}}
     version: {{.Values.version}}

@@ -36,7 +36,7 @@ docker pull redis:latest
    1. login to the all pod of redis using following command.
    2. kubectl exec -it pods/redis-0 -n redis sh
       Then fire the below command with user and pass
-   3. redis-cli --user myredis --pass Redis@123 -h 127.0.0.1 -p 6379 slaveof no one
+   3. redis-cli --user myredis --pass UmVkaXNAMTIzCg== -h 127.0.0.1 -p 6379 slaveof no one
    4. exit
       That's it.
   
@@ -45,5 +45,10 @@ docker pull openzipkin/zipkin:latest
     helm upgrade --install zipkin-release zipkin-chart --namespace monitoring --create-namespace 
 
 
+### Ingress Controller
+    helm upgrade --install ingress-controller-release ingress-controller-chart
+
+
 ### Ingress Gateway
-    helm upgrade --install ingress-release ingress-gateway-chart
+    helm upgrade --install ingress-gateway-release ingress-gateway-chart
+

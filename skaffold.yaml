@@ -10,22 +10,94 @@ build:
   artifacts:
     - image: docker.io/amsidhmicroservice/ms-card-service
       context: ms-card-service
-      jib:
-        fromImage: openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
+      docker:
+        noCache: true
+        cacheFrom:
+          - docker.io/amsidhmicroservice/ms-card-service
+
+
     - image: docker.io/amsidhmicroservice/ms-account-service
       context: ms-account-service
-      jib:
-        fromImage: openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
+      docker:
+        noCache: true
+        cacheFrom:
+          - docker.io/amsidhmicroservice/ms-account-service
+
     - image: docker.io/amsidhmicroservice/ms-location-service
       context: ms-location-service
-      jib:
-        fromImage: openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
+      docker:
+        noCache: true
+        cacheFrom:
+          - docker.io/amsidhmicroservice/ms-location-service
+
     - image: docker.io/amsidhmicroservice/ms-address-service
       context: ms-address-service
-      jib:
-        fromImage: openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
+      docker:
+        noCache: true
+        cacheFrom:
+          - docker.io/amsidhmicroservice/ms-address-service
 
     - image: docker.io/amsidhmicroservice/ms-person-service
       context: ms-person-service
-      jib:
-        fromImage: openjdk:19-alpine@sha256:1686909f4ca66f3e13463e2b00a1c53808aa155f81ae9a8aad8f4b89420d91ef
+      docker:
+        noCache: true
+        cacheFrom:
+          - docker.io/amsidhmicroservice/ms-person-service
+
+deploy:
+  statusCheckDeadlineSeconds: 600
+  helm:
+    releases:
+      - name: ms-card-release
+        chartPath: helm/apps/ms-card-service-chart
+        namespace: apps
+        createNamespace: true
+        setValues:
+          deployment.imagePullPolicy: "Always"
+        packaged:
+          appVersion: "0.0.2-SNAPSHOT"
+          version: "0.0.2-SNAPSHOT"
+
+      - name: ms-account-release
+        chartPath: helm/apps/ms-account-service-chart
+        namespace: apps
+        createNamespace: true
+        setValues:
+          deployment.imagePullPolicy: "Always"
+        packaged:
+          appVersion: "0.0.2-SNAPSHOT"
+          version: "0.0.2-SNAPSHOT"
+
+      - name: ms-location-release
+        chartPath: helm/apps/ms-location-service-chart
+        namespace: apps
+        createNamespace: true
+        setValues:
+          deployment.imagePullPolicy: "Always"
+        packaged:
+          appVersion: "0.0.2-SNAPSHOT"
+          version: "0.0.2-SNAPSHOT"
+
+      - name: ms-address-release
+        chartPath: helm/apps/ms-address-service-chart
+        namespace: apps
+        createNamespace: true
+        setValues:
+          deployment.imagePullPolicy: "Always"
+        packaged:
+          appVersion: "0.0.2-SNAPSHOT"
+          version: "0.0.2-SNAPSHOT"
+
+      - name: ms-person-release
+        chartPath: helm/apps/ms-person-service-chart
+        namespace: apps
+        createNamespace: true
+        setValues:
+          deployment.imagePullPolicy: "Always"
+        packaged:
+          appVersion: "0.0.2-SNAPSHOT"
+          version: "0.0.2-SNAPSHOT"
+
+
+
+

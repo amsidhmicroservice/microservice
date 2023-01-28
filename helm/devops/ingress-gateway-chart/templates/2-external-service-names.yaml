@@ -1,0 +1,59 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ms-card-nginx-service
+  namespace: {{.Values.namespace.name}}
+spec:
+  type: ExternalName
+  externalName: ms-card-service.apps.svc.cluster.local
+  ports:
+    - port: 80
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ms-account-nginx-service
+  namespace: {{.Values.namespace.name}}
+spec:
+  type: ExternalName
+  externalName: ms-account-service.apps.svc.cluster.local
+  ports:
+    - port: 80
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ms-location-nginx-service
+  namespace: {{.Values.namespace.name}}
+spec:
+  type: ExternalName
+  externalName: ms-location-service.apps.svc.cluster.local
+  ports:
+    - port: 80
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ms-address-nginx-service
+  namespace: {{.Values.namespace.name}}
+spec:
+  type: ExternalName
+  externalName: ms-address-service.apps.svc.cluster.local
+  ports:
+    - port: 80
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ms-person-nginx-service
+  namespace: {{.Values.namespace.name}}
+spec:
+  type: ExternalName
+  externalName: ms-person-service.apps.svc.cluster.local
+  ports:
+    - port: 80

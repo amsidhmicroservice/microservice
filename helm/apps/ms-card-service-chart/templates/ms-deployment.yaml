@@ -24,22 +24,21 @@ spec:
         version: {{.Values.version}}
     spec:
       containers:
-        - image: {{.Values.deployment.imageName}}:{{.Values.deployment.imageTag}}
+        - image: {{.Values.deployment.imageName}}:{{ default "latest" .Values.deployment.imageTag }}
           imagePullPolicy: {{.Values.deployment.imagePullPolicy}}
           name: {{.Values.deployment.name}}
           ports:
-            - name: person-http
-              containerPort: 8080
-              protocol: TCP
+            - containerPort: {{default "8080" .Values.deployment.port}}
+              protocol: {{default "TCP" .Values.service.protocol}}
           envFrom:
             - configMapRef:
-                name: person-ms-configmap
+                name: {{default "card-ms-configmap" .Values.configmap.name}}
             - secretRef:
-                name: person-secret
+                name: {{default "card-secret" .Values.secret.name}}
           livenessProbe:
             httpGet:
-              path: "/actuator/health/liveness"
-              port: 8080
+              path: {{default "/actuator/health/liveness" .Values.deployment.livenessProbe.httpGet.path}}
+              port: {{default "8080" .Values.deployment.port}}
             failureThreshold: 5
             periodSeconds: 10
             initialDelaySeconds: 20
@@ -47,8 +46,8 @@ spec:
             successThreshold: 1
           readinessProbe:
             httpGet:
-              path: "/actuator/health/readiness"
-              port: 8080
+              path: {{default "/actuator/health/readiness" .Values.deployment.readinessProbe.httpGet.path}}
+              port: {{default "8080" .Values.deployment.port}}
             failureThreshold: 5
             periodSeconds: 10
             initialDelaySeconds: 20

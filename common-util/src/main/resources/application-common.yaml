@@ -55,3 +55,12 @@ spring:
       username: ${REDIS_USERNAME:myredis}
       password: ${REDIS_PASSWORD:Redis@123}
 
+feign:
+  client:
+    url:
+      ms-card-service: ${MS_CARD_SERVICE_HOST:ms-card-service}
+      ms-address-service: ${MS_ADDRESS_SERVICE_HOST:ms-address-service}
+      ms-account-service: ${MS_ACCOUNT_SERVICE_HOST:ms-account-service}
+      ms-location-service: ${MS_LOCATION_SERVICE_HOST:ms-location-service}
+
+

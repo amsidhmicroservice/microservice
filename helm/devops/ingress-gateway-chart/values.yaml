@@ -1,7 +1,8 @@
-namespace: ingress-nginx
+namespace:
+  name: ingress-ns
 
 gateway:
-  name: ingress-gateway
+  name: main-ingress
   ingress:
     class: nginx
 host:
@@ -9,15 +10,12 @@ host:
   port: 80
   pathType: ImplementationSpecific
   service:
-
     name:
-      card: ms-card-service
-      account: ms-account-service
-      location: ms-location-service
-      address: ms-address-service
-      person: ms-person-service
+      card: ms-card-nginx-service
+      account: ms-account-nginx-service
+      location: ms-location-nginx-service
+      address: ms-address-nginx-service
+      person: ms-person-nginx-service
       currencyExchange: currency-exchange
       currencyConversion: currency-conversion
-
-
 

@@ -2,18 +2,22 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: card-ms-configmap
+  name: person-ms-configmap
+  namespace: {{.Values.namespace}}
   labels:
-    app: card-ms-configmap
+    app: {{default "person-ms-configmap" .Values.configmap.name}}
 data:
   SPRING_PROFILES_ACTIVE: {{.Values.configmap.SPRING_PROFILES_ACTIVE}}
   APPLICATION_PORT: "{{.Values.configmap.APPLICATION_PORT}}"
   DATABASE_NAME: {{.Values.configmap.DATABASE_NAME}}
   DATABASE_USERNAME: {{.Values.configmap.DATABASE_USERNAME}}
-  DATABASE_PASSWORD: {{.Values.configmap.DATABASE_PASSWORD}}
   REDIS_HOST: {{.Values.configmap.REDIS_HOST}}
   REDIS_PORT: "{{.Values.configmap.REDIS_PORT}}"
   REDIS_USERNAME: {{.Values.configmap.REDIS_USERNAME}}
   REDIS_PASSWORD: {{.Values.configmap.REDIS_PASSWORD}}
   ZIPKIN_HOST: {{.Values.configmap.ZIPKIN_HOST}}
+  MS_ADDRESS_SERVICE_HOST: {{.Values.configmap.MS_ADDRESS_SERVICE_HOST}}
+  MS_ACCOUNT_SERVICE_HOST: {{.Values.configmap.MS_ACCOUNT_SERVICE_HOST}}
+
+
 

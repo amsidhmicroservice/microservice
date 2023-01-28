@@ -5,7 +5,7 @@ configmap:
     host: "quickstart-es-internal-http.monitoring.svc.cluster.local"
     port: 9200
     username: elastic
-    password: "k34Kjqwb40759SB6THZ6ApG5"
+    password: "20ZITwPakX0ma0756EK7r6q2"
     schema: https
     ssl_verify: false
     ssl_version: TLSv1_2

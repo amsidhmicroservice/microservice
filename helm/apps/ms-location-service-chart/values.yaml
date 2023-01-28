@@ -1,23 +1,37 @@
-namespace: default
+namespace: apps
 version: 0.0.2-SNAPSHOT
 
 deployment:
   imageName: docker.io/amsidhmicroservice/ms-location-service
   imageTag: 0.0.2-SNAPSHOT
   name: ms-location-service
+  port: 8080
   numberOfReplicas: 1
-  imagePullPolicy: Always
+  imagePullPolicy: IfNotPresent
+  livenessProbe:
+    httpGet:
+      path: '"/actuator/health/liveness"'
+  readinessProbe:
+    httpGet:
+      path: '"/actuator/health/readiness"'
 
 service:
   name: ms-location-service
   type: NodePort
+  port: 80
+  targetPort: 8080
+  protocol: TCP
+
+secret:
+  name: location-secret
+  DATABASE_PASSWORD: cG9zdGdyZXMK  #cG9zdGdyZXMK
 
 configmap:
+  name: location-ms-configmap
   SPRING_PROFILES_ACTIVE: prod
   APPLICATION_PORT: 8080
   DATABASE_NAME: microservice
   DATABASE_USERNAME: sa
-  DATABASE_PASSWORD: ""
   REDIS_HOST: "redis-service.redis.svc.cluster.local"
   REDIS_PORT: "6379"
   REDIS_USERNAME: "myredis"

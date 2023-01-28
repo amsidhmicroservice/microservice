@@ -1,7 +1,9 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{.Values.gateway.name}}
+  namespace: {{.Values.namespace.name}}
   annotations:
     kubernetes.io/ingress.class: {{.Values.gateway.ingress.class}}
     nginx.ingress.kubernetes.io/use-regex: "true"

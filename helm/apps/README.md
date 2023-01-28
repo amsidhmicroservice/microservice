@@ -7,11 +7,11 @@ docker pull docker.io/amsidhmicroservice/ms-person-service:0.0.2-SNAPSHOT
 
 
 ### Now deploy all service helm charts
-helm upgrade --install ms-card-release ms-card-service-chart
-helm upgrade --install ms-account-release ms-account-service-chart
-helm upgrade --install ms-location-release ms-location-service-chart
-helm upgrade --install ms-address-release ms-address-service-chart
-helm upgrade --install ms-person-release ms-person-service-chart
+helm upgrade --install ms-card-release ms-card-service-chart --create-namespace
+helm upgrade --install ms-account-release ms-account-service-chart --create-namespace
+helm upgrade --install ms-location-release ms-location-service-chart --create-namespace
+helm upgrade --install ms-address-release ms-address-service-chart --create-namespace
+helm upgrade --install ms-person-release ms-person-service-chart --create-namespace
 
 ### Uninstall all ms
 helm uninstall ms-card-release

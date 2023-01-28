@@ -1,26 +1,41 @@
-namespace: default
+namespace: apps
 version: 0.0.2-SNAPSHOT
 
 deployment:
   imageName: docker.io/amsidhmicroservice/ms-account-service
   imageTag: 0.0.2-SNAPSHOT
   name: ms-account-service
+  port: 8080
   numberOfReplicas: 1
-  imagePullPolicy: Always
+  imagePullPolicy: IfNotPresent
+  livenessProbe:
+    httpGet:
+      path: '"/actuator/health/liveness"'
+  readinessProbe:
+    httpGet:
+      path: '"/actuator/health/readiness"'
 
 service:
   name: ms-account-service
   type: NodePort
+  port: 80
+  targetPort: 8080
+  protocol: TCP
+
+secret:
+  name: account-secret
+  DATABASE_PASSWORD: cG9zdGdyZXMK  #cG9zdGdyZXMK
 
 configmap:
+  name: account-ms-configmap
   SPRING_PROFILES_ACTIVE: prod
   APPLICATION_PORT: 8080
   DATABASE_NAME: microservice
   DATABASE_USERNAME: sa
-  DATABASE_PASSWORD: ""
   REDIS_HOST: "redis-service.redis.svc.cluster.local"
   REDIS_PORT: "6379"
   REDIS_USERNAME: "myredis"
   REDIS_PASSWORD: "Redis@123"
   ZIPKIN_HOST: "zipkin-service.monitoring.svc.cluster.local"
+  MS_CARD_SERVICE_HOST: "ms-card-service.apps.svc.cluster.local"
 
