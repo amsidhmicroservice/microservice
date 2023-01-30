@@ -6,11 +6,13 @@ metadata:
     app: ms-location-service
     version: 0.0.2-SNAPSHOT
   name: ms-location-service
+  namespace: apps
 spec:
   ports:
-    - name: location-http
+    - name: service-port
       port: 80
       targetPort: 8080
+      nodePort: 32764
       protocol: TCP
   selector:
     app: location-ms

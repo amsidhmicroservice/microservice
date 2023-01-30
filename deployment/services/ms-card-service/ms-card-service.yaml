@@ -6,12 +6,15 @@ metadata:
     app: ms-card-service
     version: 0.0.2-SNAPSHOT
   name: ms-card-service
+  namespace: apps
 spec:
   ports:
-    - name: card-http
+    - name: service-port
       port: 80
       targetPort: 8080
+      nodePort: 32763
       protocol: TCP
+
   selector:
     app: card-ms
     version: 0.0.2-SNAPSHOT

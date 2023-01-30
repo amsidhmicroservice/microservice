@@ -6,6 +6,7 @@ deployment:
   imageTag: 0.0.2-SNAPSHOT
   name: ms-address-service
   port: 8080
+  portName: tomcat-port
   numberOfReplicas: 1
   imagePullPolicy: IfNotPresent
   livenessProbe:
@@ -18,8 +19,10 @@ deployment:
 service:
   name: ms-address-service
   type: NodePort
+  portName: service-port
   port: 80
   targetPort: 8080
+  nodePort: 32762
   protocol: TCP
 
 secret:

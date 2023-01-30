@@ -3,6 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: address-ms-configmap
+  namespace: apps
   labels:
     app: address-ms-configmap
 data:
@@ -11,9 +12,10 @@ data:
   DATABASE_NAME: microservice
   DATABASE_USERNAME: sa
   DATABASE_PASSWORD: ""
-  REDIS_HOST: "redis.redis.svc.cluster.local"
+  REDIS_HOST: "redis-service.redis.svc.cluster.local"
   REDIS_PORT: "6379"
   REDIS_USERNAME: "myredis"
   REDIS_PASSWORD: "Redis@123"
   ZIPKIN_HOST: "zipkin-service.monitoring.svc.cluster.local"
+  MS_LOCATION_SERVICE_HOST: "ms-location-service.apps.svc.cluster.local"
 

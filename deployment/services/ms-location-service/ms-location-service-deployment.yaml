@@ -5,7 +5,7 @@ metadata:
     app: location-ms
     version: 0.0.2-SNAPSHOT
   name: location-ms
-  namespace: default
+  namespace: apps
 spec:
   replicas: 1
   minReadySeconds: 45
@@ -24,11 +24,11 @@ spec:
         version: 0.0.2-SNAPSHOT
     spec:
       containers:
-        - image: ms-location-service
+        - image: amsidhmicroservice/ms-location-service:0.0.2-SNAPSHOT
           imagePullPolicy: IfNotPresent
           name: location-ms
           ports:
-            - name: liveness-port
+            - name: tomcat-port
               containerPort: 8080
               protocol: TCP
           envFrom:
@@ -39,7 +39,7 @@ spec:
           livenessProbe:
             httpGet:
               path: "/actuator/health/liveness"
-              port: 8080
+              port: tomcat-port
             failureThreshold: 5
             periodSeconds: 30
             initialDelaySeconds: 180
@@ -48,7 +48,7 @@ spec:
           readinessProbe:
             httpGet:
               path: "/actuator/health/readiness"
-              port: 8080
+              port: tomcat-port
             failureThreshold: 5
             periodSeconds: 10
             initialDelaySeconds: 20

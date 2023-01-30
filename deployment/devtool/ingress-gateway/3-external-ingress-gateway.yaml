@@ -1,7 +1,9 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-gateway
+  name: main-ingress
+  namespace: ingress-ns
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/use-regex: "true"
@@ -15,7 +17,7 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: ms-card-service
+                name: ms-card-nginx-service
                 port:
                   number: 80
 
@@ -23,7 +25,7 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: ms-account-service
+                name: ms-account-nginx-service
                 port:
                   number: 80
 
@@ -31,7 +33,7 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: ms-location-service
+                name: ms-location-nginx-service
                 port:
                   number: 80
 
@@ -39,7 +41,7 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: ms-address-service
+                name: ms-address-nginx-service
                 port:
                   number: 80
 
@@ -47,7 +49,7 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: ms-person-service
+                name: ms-person-nginx-service
                 port:
                   number: 80
 
@@ -71,7 +73,6 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: ms-person-service
+                name: ms-person-nginx-service
                 port:
                   number: 80
-

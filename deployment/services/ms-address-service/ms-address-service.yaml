@@ -6,11 +6,13 @@ metadata:
     app: ms-address-service
     version: 0.0.2-SNAPSHOT
   name: ms-address-service
+  namespace: apps
 spec:
   ports:
-    - name: address-http
+    - name: service-port
       port: 80
       targetPort: 8080
+      nodePort: 32762
       protocol: TCP
   selector:
     app: address-ms

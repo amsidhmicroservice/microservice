@@ -28,7 +28,8 @@ spec:
           imagePullPolicy: {{.Values.deployment.imagePullPolicy}}
           name: {{.Values.deployment.name}}
           ports:
-            - containerPort: {{default "8080" .Values.deployment.port}}
+            - name: {{.Values.deployment.portName}}
+              containerPort: {{default "8080" .Values.deployment.port}}
               protocol: {{default "TCP" .Values.service.protocol}}
           envFrom:
             - configMapRef:
@@ -38,7 +39,7 @@ spec:
           livenessProbe:
             httpGet:
               path: {{default "/actuator/health/liveness" .Values.deployment.livenessProbe.httpGet.path}}
-              port: {{default "8080" .Values.deployment.port}}
+              port: {{.Values.deployment.portName}}
             failureThreshold: 5
             periodSeconds: 10
             initialDelaySeconds: 20
@@ -47,7 +48,7 @@ spec:
           readinessProbe:
             httpGet:
               path: {{default "/actuator/health/readiness" .Values.deployment.readinessProbe.httpGet.path}}
-              port: {{default "8080" .Values.deployment.port}}
+              port: {{.Values.deployment.portName}}
             failureThreshold: 5
             periodSeconds: 10
             initialDelaySeconds: 20

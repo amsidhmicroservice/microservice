@@ -5,7 +5,7 @@ metadata:
     app: account-ms
     version: 0.0.2-SNAPSHOT
   name: account-ms
-  namespace: default
+  namespace: apps
 spec:
   replicas: 1
   minReadySeconds: 45
@@ -24,11 +24,11 @@ spec:
         version: 0.0.2-SNAPSHOT
     spec:
       containers:
-        - image: ms-account-service
+        - image: amsidhmicroservice/ms-account-service:0.0.2-SNAPSHOT
           imagePullPolicy: IfNotPresent
           name: account-ms
           ports:
-            - name: account-http
+            - name: tomcat-port
               containerPort: 8080
               protocol: TCP
           envFrom:
@@ -40,7 +40,7 @@ spec:
           livenessProbe:
             httpGet:
               path: "/actuator/health/liveness"
-              port: 8080
+              port: tomcat-port
             failureThreshold: 5
             periodSeconds: 10
             initialDelaySeconds: 20
@@ -49,7 +49,7 @@ spec:
           readinessProbe:
             httpGet:
               path: "/actuator/health/readiness"
-              port: 8080
+              port: tomcat-port
             failureThreshold: 5
             periodSeconds: 10
             initialDelaySeconds: 20

@@ -6,11 +6,13 @@ metadata:
     app: ms-account-service
     version: 0.0.2-SNAPSHOT
   name: ms-account-service
+  namespace: apps
 spec:
   ports:
-    - name: account-http
+    - name: service-port
       port: 80
       targetPort: 8080
+      nodePort: 32761
       protocol: TCP
   selector:
     app: account-ms

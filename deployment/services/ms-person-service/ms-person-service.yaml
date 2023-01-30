@@ -6,11 +6,13 @@ metadata:
     app: ms-person-service
     version: 0.0.2-SNAPSHOT
   name: ms-person-service
+  namespace: apps
 spec:
   ports:
-    - name: person-http
+    - name: service-port
       port: 80
       targetPort: 8080
+      nodePort: 32765
       protocol: TCP
   selector:
     app: person-ms
