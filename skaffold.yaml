@@ -7,6 +7,7 @@ build:
   local:
     concurrency: 0
     push: true
+
   artifacts:
     - image: docker.io/amsidhmicroservice/ms-card-service
       context: ms-card-service

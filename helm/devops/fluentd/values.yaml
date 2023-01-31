@@ -3,7 +3,7 @@ configmap:
     host: quickstart-es-internal-http.monitoring.svc.cluster.local
     port: 9200
     username: elastic
-    password: "eI7z0Mjr216ja373y6PAiI4t"
+    password: "5sv52F09k78s3Z6yurC9nbWR"
 
   input:
     source:

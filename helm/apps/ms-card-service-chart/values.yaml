@@ -2,7 +2,7 @@ namespace: apps
 version: 0.0.2-SNAPSHOT
 
 deployment:
-  imageName: docker.io/amsidhmicroservice/ms-card-service
+  imageName: amsidhmicroservice/ms-card-service
   imageTag: 0.0.2-SNAPSHOT
   name: ms-card-service
   port: 8080

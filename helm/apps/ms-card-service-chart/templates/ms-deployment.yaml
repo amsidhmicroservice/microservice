@@ -28,7 +28,7 @@ spec:
           imagePullPolicy: {{.Values.deployment.imagePullPolicy}}
           name: {{.Values.deployment.name}}
           ports:
-            - name:{{.Values.deployment.portName}}
+            - name: {{.Values.deployment.portName}}
               containerPort: {{default "8080" .Values.deployment.port}}
               protocol: {{default "TCP" .Values.service.protocol}}
           envFrom:

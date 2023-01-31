@@ -10,7 +10,7 @@ service:
 
 redis:
   username: myredis
-  password: UmVkaXNAMTIzCg==
+  password: Redis@123
 
 persistent:
   spec:
