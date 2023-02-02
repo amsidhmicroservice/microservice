@@ -48,12 +48,11 @@ spring:
         generate_statistics: true
         # Log slow queries
         session.events.log.LOG_QUERIES_SLOWER_THAN_MS: 1
-  data:
-    redis:
-      host: ${REDIS_HOST:localhost}
-      port: ${REDIS_PORT:6379}
-      username: ${REDIS_USERNAME:myredis}
-      password: ${REDIS_PASSWORD:Redis@123}
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    username: ${REDIS_USERNAME:myredis}
+    password: ${REDIS_PASSWORD:Redis@123}
 
 feign:
   client:
