@@ -52,7 +52,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public List<PersonModel> getPersons() {
-        return objectMapper.convertValue(personRepository.findAll(), new TypeReference<>() {
+        return objectMapper.convertValue(personRepository.findAll(), new TypeReference<List<PersonModel>>() {
         });
     }
 }

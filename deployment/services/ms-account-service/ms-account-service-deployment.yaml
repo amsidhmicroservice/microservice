@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: account-ms
-    version: 0.0.2-SNAPSHOT
+    version: 0.0.2-apm
   name: account-ms
   namespace: apps
 spec:
@@ -21,10 +21,10 @@ spec:
     metadata:
       labels:
         app: account-ms
-        version: 0.0.2-SNAPSHOT
+        version: 0.0.2-apm
     spec:
       containers:
-        - image: amsidhmicroservice/ms-account-service:0.0.2-SNAPSHOT
+        - image: amsidhmicroservice/ms-account-service:0.0.2-apm
           imagePullPolicy: IfNotPresent
           name: account-ms
           ports:

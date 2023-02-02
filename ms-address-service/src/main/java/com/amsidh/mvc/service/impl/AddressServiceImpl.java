@@ -49,7 +49,7 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public List<AddressModel> getAddresses() {
-        return objectMapper.convertValue(addressRepository.findAll(), new TypeReference<>() {
+        return objectMapper.convertValue(addressRepository.findAll(), new TypeReference<List<AddressModel>>() {
         });
     }
 }

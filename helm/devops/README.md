@@ -12,7 +12,7 @@ helm upgrade --install elastic-operator elastic/eck-operator -n elastic-system -
 ### ElasticSearch:
 #Pull elasticsearch image with required version mentioned in values.yaml file
 docker pull docker.elastic.co/elasticsearch/elasticsearch:6.8.23
-helm upgrade --install elastic-release elastic-chart --namespace monitoring --create-namespace
+helm upgrade --install elasticsearch-release elasticsearch-chart --namespace monitoring --create-namespace
 
 ### Kibana:
 #Pull kibana image with required version mentioned in values.yaml file. Elastic and Kibana version must be same.

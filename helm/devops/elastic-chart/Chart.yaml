@@ -1,6 +1,0 @@
-apiVersion: v1
-appVersion: 0.0.2-SNAPSHOT
-description: A Helm chart for elastic-chart
-name: elastic-chart
-version: 1.0.0
-

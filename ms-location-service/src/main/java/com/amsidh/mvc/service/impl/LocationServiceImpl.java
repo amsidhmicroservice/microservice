@@ -49,7 +49,7 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public List<LocationModel> getAllLocations() {
-        return objectMapper.convertValue(locationRepository.findAll(), new TypeReference<>() {
+        return objectMapper.convertValue(locationRepository.findAll(), new TypeReference<List<LocationModel>>() {
         });
     }
 }

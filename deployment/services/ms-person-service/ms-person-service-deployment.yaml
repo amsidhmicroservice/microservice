@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: person-ms
-    version: 0.0.2-SNAPSHOT
+    version: 0.0.2-apm
   name: person-ms
   namespace: apps
 spec:
@@ -21,10 +21,10 @@ spec:
     metadata:
       labels:
         app: person-ms
-        version: 0.0.2-SNAPSHOT
+        version: 0.0.2-apm
     spec:
       containers:
-        - image: amsidhmicroservice/ms-person-service:0.0.2-SNAPSHOT
+        - image: amsidhmicroservice/ms-person-service:0.0.2-apm
           imagePullPolicy: IfNotPresent
           name: person-ms
           ports:

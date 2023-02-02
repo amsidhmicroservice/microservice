@@ -49,7 +49,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public List<AccountModel> getAccounts() {
-        return objectMapper.convertValue(accountRepository.findAll(), new TypeReference<>() {
+        return objectMapper.convertValue(accountRepository.findAll(), new TypeReference<List<AccountModel>>() {
         });
     }
 }

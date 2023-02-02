@@ -3,23 +3,24 @@ kind: Config
 build:
   tagPolicy:
     envTemplate:
-      template: "0.0.2-SNAPSHOT"
+      template: "0.0.2-apm"
   local:
     concurrency: 0
-    push: true
+    push: false
 
   artifacts:
     - image: docker.io/amsidhmicroservice/ms-card-service
       context: ms-card-service
       docker:
+        dockerfile: Dockerfile
         noCache: true
         cacheFrom:
           - docker.io/amsidhmicroservice/ms-card-service
 
-
     - image: docker.io/amsidhmicroservice/ms-account-service
       context: ms-account-service
       docker:
+        dockerfile: Dockerfile
         noCache: true
         cacheFrom:
           - docker.io/amsidhmicroservice/ms-account-service
@@ -27,6 +28,7 @@ build:
     - image: docker.io/amsidhmicroservice/ms-location-service
       context: ms-location-service
       docker:
+        dockerfile: Dockerfile
         noCache: true
         cacheFrom:
           - docker.io/amsidhmicroservice/ms-location-service
@@ -34,6 +36,7 @@ build:
     - image: docker.io/amsidhmicroservice/ms-address-service
       context: ms-address-service
       docker:
+        dockerfile: Dockerfile
         noCache: true
         cacheFrom:
           - docker.io/amsidhmicroservice/ms-address-service
@@ -41,6 +44,7 @@ build:
     - image: docker.io/amsidhmicroservice/ms-person-service
       context: ms-person-service
       docker:
+        dockerfile: Dockerfile
         noCache: true
         cacheFrom:
           - docker.io/amsidhmicroservice/ms-person-service

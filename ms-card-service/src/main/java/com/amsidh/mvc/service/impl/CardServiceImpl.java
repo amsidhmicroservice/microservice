@@ -51,7 +51,7 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public List<CardModel> getAllCards() {
-        return objectMapper.convertValue(cardRepository.findAll(), new TypeReference<>() {
+        return objectMapper.convertValue(cardRepository.findAll(), new TypeReference<List<CardModel>>() {
         });
     }
 }

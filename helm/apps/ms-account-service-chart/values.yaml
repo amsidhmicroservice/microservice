@@ -1,9 +1,9 @@
 namespace: apps
-version: 0.0.2-SNAPSHOT
+version: 0.0.2-apm
 
 deployment:
   imageName: docker.io/amsidhmicroservice/ms-account-service
-  imageTag: 0.0.2-SNAPSHOT
+  imageTag: 0.0.2-apm
   name: ms-account-service
   port: 8080
   portName: tomcat-port
@@ -41,4 +41,8 @@ configmap:
   REDIS_PASSWORD: "Redis@123"
   ZIPKIN_HOST: "zipkin-service.monitoring.svc.cluster.local"
   MS_CARD_SERVICE_HOST: "ms-card-service.apps.svc.cluster.local"
-
+  # APM Related Configuration
+  ELASTIC_APM_APPLICATION_PACKAGES: "com.amsidh.mvc"
+  ELASTIC_APM_SECRET_TOKEN: "6977lAon3JBdd0ui2AhI702c"
+  ELASTIC_APM_SERVER_URLS: "http://quickstart-apm-http.monitoring.svc.cluster.local:8200"
+  ELASTIC_APM_SERVICE_NAME: "ms-account-service"

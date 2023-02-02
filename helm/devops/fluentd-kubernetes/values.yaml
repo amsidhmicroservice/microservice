@@ -1,5 +1,11 @@
 namespace:
   name: monitoring
+
+deployment:
+  image:
+    name: fluent/fluentd-kubernetes-daemonset
+    tag: v1.14.5-debian-elasticsearch7-1.1
+
 configmap:
   elastic:
     host: "quickstart-es-internal-http.monitoring.svc.cluster.local"
