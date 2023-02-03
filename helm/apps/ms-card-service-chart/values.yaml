@@ -2,8 +2,9 @@ namespace: apps
 version: 0.0.2-apm
 
 deployment:
-  imageName: amsidhmicroservice/ms-card-service
-  imageTag: 0.0.2-apm
+  registry: docker.io
+  repository: amsidhmicroservice/ms-card-service
+  tag: 0.0.2-apm
   name: ms-card-service
   port: 8080
   portName: tomcat-port

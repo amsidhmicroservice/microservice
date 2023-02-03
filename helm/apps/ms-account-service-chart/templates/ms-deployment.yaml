@@ -24,7 +24,7 @@ spec:
         version: {{.Values.version}}
     spec:
       containers:
-        - image: {{.Values.deployment.imageName}}:{{ default "latest" .Values.deployment.imageTag }}
+        - image: {{.Values.deployment.registry}}/{{.Values.deployment.repository}}:{{ default "latest" .Values.deployment.tag }}
           imagePullPolicy: {{.Values.deployment.imagePullPolicy}}
           name: {{.Values.deployment.name}}
           ports:

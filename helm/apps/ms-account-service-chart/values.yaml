@@ -2,8 +2,9 @@ namespace: apps
 version: 0.0.2-apm
 
 deployment:
-  imageName: docker.io/amsidhmicroservice/ms-account-service
-  imageTag: 0.0.2-apm
+  registry: docker.io
+  repository: amsidhmicroservice/ms-account-service
+  tag: 0.0.2-apm
   name: ms-account-service
   port: 8080
   portName: tomcat-port
