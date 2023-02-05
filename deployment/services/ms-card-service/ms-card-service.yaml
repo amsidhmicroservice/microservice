@@ -4,7 +4,7 @@ kind: Service
 metadata:
   labels:
     app: ms-card-service
-    version: 0.0.2-apm
+    version: 0.0.1-mysql
   name: ms-card-service
   namespace: apps
 spec:
@@ -17,5 +17,5 @@ spec:
 
   selector:
     app: card-ms
-    version: 0.0.2-apm
+    version: 0.0.1-mysql
   type: NodePort

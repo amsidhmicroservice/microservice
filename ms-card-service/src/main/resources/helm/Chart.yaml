@@ -1,6 +1,0 @@
-apiVersion: v1
-appVersion: 0.0.2-apm
-description: This is ms-card-service Application
-name: ms-card-service
-version: 0.0.2-apm
-

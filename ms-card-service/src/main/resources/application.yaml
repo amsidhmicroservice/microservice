@@ -1,6 +1,6 @@
 server:
   port: ${APPLICATION_PORT:0}
-
+checkParatemer: ${CHECK_PARAMETER:Amsidh}
 spring:
   application:
     name: ms-card-service
@@ -14,16 +14,29 @@ spring:
   config:
     activate:
       on-profile: prod
+
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:${DATABASE_NAME:microservice};DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    username: ${DATABASE_USERNAME:sa}
+    url: jdbc:mysql://${DATABASE_HOSTNAME}:3306/${DATABASE_NAME}?createDatabaseIfNotExist=true&useSSL=true
+    username: ${DATABASE_USERNAME}
     password: ${DATABASE_PASSWORD}
+    type: com.mysql.cj.jdbc.MysqlDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
   jpa:
-    show-sql: false
-    generate-ddl: true
-    hibernate:
-      generate_statistics: false
+    properties:
+      hibernate.show_sql: false
+      hibernate.hbm2ddl.auto: none
+      hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+      hibernate.generate_statistics: false
+    database-platform: mysql
+
+  sql:
+    init:
+      mode: always
+      platform: mysql
+      schema-locations: classpath*:database/schema/carddb-schema.sql
+      data-locations: classpath*:database/data/carddb-data.sql
+
   h2:
     console:
       enabled: true
@@ -38,7 +51,7 @@ spring:
       on-profile: dev
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:postgresdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:carddb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     username: sa
     password: sa
   jpa:
@@ -58,7 +71,7 @@ spring:
       on-profile: test
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:postgresdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:carddb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     username: sa
     password: sa
   jpa:

@@ -1,0 +1,18 @@
+namespaceOverride: mysql
+image:
+  registry: docker.io
+  repository: bitnami/mysql
+  tag: 8.0.32-debian-11-r0
+
+auth:
+  rootPassword: root@2023
+  createDatabase: true
+  database: microservice
+  username: msuser
+  password: msuser@2023
+
+primary:
+  service:
+    type: ClusterIP
+    ports:
+      mysql: 3306

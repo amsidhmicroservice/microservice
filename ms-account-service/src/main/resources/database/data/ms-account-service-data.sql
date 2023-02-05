@@ -1,0 +1,10 @@
+insert into account (account_id, account_number, account_type) values (1, 98363365211, 'Saving');
+insert into account (account_id, account_number, account_type) values (2, 98363365212, 'Loan');
+insert into account (account_id, account_number, account_type) values (3, 98363365213, 'Overdraft');
+insert into account (account_id, account_number, account_type) values (4, 98363365214, 'Salary');
+insert into account (account_id, account_number, account_type) values (5, 98363365215, 'Demat');
+insert into account (account_id, account_number, account_type) values (6, 98363365216, 'FD');
+insert into account (account_id, account_number, account_type) values (7, 98363365217, 'Current');
+insert into account (account_id, account_number, account_type) values (8, 98363365218, 'Overdraft');
+insert into account (account_id, account_number, account_type) values (9, 98363365219, 'Loan');
+insert into account (account_id, account_number, account_type) values (10, 9836336520, 'Overdraft');

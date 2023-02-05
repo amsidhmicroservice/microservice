@@ -4,7 +4,7 @@ kind: Service
 metadata:
   labels:
     app: ms-address-service
-    version: 0.0.2-apm
+    version: 0.0.1-mysql
   name: ms-address-service
   namespace: apps
 spec:
@@ -16,5 +16,5 @@ spec:
       protocol: TCP
   selector:
     app: address-ms
-    version: 0.0.2-apm
+    version: 0.0.1-mysql
   type: NodePort

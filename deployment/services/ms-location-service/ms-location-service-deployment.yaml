@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: location-ms
-    version: 0.0.2-apm
+    version: 0.0.1-mysql
   name: location-ms
   namespace: apps
 spec:
@@ -21,10 +21,10 @@ spec:
     metadata:
       labels:
         app: location-ms
-        version: 0.0.2-apm
+        version: 0.0.1-mysql
     spec:
       containers:
-        - image: amsidhmicroservice/ms-location-service:0.0.2-apm
+        - image: amsidhmicroservice/ms-location-service:0.0.1-mysql
           imagePullPolicy: IfNotPresent
           name: location-ms
           ports:

@@ -28,7 +28,16 @@ public class AccountServiceApplication implements CommandLineRunner {
     public void run(String... args) {
         log.info("Cleaning Account table");
         accountRepository.deleteAll();
-        List<Account> accounts = Arrays.asList(Account.builder().accountId(1l).accountNumber(98363365211L).accountType("Saving").build(), Account.builder().accountId(2l).accountNumber(98363365212L).accountType("Loan").build(), Account.builder().accountId(3l).accountNumber(98363365213L).accountType("Overdraft").build(), Account.builder().accountId(4l).accountNumber(98363365214L).accountType("Salary").build(), Account.builder().accountId(5l).accountNumber(98363365215L).accountType("Demat").build(), Account.builder().accountId(6l).accountNumber(98363365216L).accountType("FD").build(), Account.builder().accountId(7l).accountNumber(98363365217L).accountType("Overdraft").build(), Account.builder().accountId(8l).accountNumber(98363365218L).accountType("Saving").build(), Account.builder().accountId(9l).accountNumber(98363365219L).accountType("Loan").build(), Account.builder().accountId(10l).accountNumber(98363365210L).accountType("Salary").build());
+        List<Account> accounts = Arrays.asList(Account.builder().accountId(1l).accountNumber(98363365211L).accountType("Saving").build(),
+                Account.builder().accountId(2l).accountNumber(98363365212L).accountType("Loan").build(),
+                Account.builder().accountId(3l).accountNumber(98363365213L).accountType("Overdraft").build(),
+                Account.builder().accountId(4l).accountNumber(98363365214L).accountType("Salary").build(),
+                Account.builder().accountId(5l).accountNumber(98363365215L).accountType("Demat").build(),
+                Account.builder().accountId(6l).accountNumber(98363365216L).accountType("FD").build(),
+                Account.builder().accountId(7l).accountNumber(98363365217L).accountType("Overdraft").build(),
+                Account.builder().accountId(8l).accountNumber(98363365218L).accountType("Saving").build(),
+                Account.builder().accountId(9l).accountNumber(98363365219L).accountType("Loan").build(),
+                Account.builder().accountId(10l).accountNumber(98363365210L).accountType("Salary").build());
         List<Account> savedAccounts = accountRepository.saveAll(accounts);
         log.info("Number of account saved {}", savedAccounts.size());
     }

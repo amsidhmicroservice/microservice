@@ -9,6 +9,7 @@ metadata:
 data:
   SPRING_PROFILES_ACTIVE: {{.Values.configmap.SPRING_PROFILES_ACTIVE}}
   APPLICATION_PORT: "{{.Values.configmap.APPLICATION_PORT}}"
+  DATABASE_HOSTNAME: {{.Values.configmap.DATABASE_HOSTNAME}}
   DATABASE_NAME: {{.Values.configmap.DATABASE_NAME}}
   DATABASE_USERNAME: {{.Values.configmap.DATABASE_USERNAME}}
   REDIS_HOST: {{.Values.configmap.REDIS_HOST}}

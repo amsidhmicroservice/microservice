@@ -3,7 +3,7 @@ kind: Config
 build:
   tagPolicy:
     envTemplate:
-      template: "0.0.2-apm"
+      template: "0.0.1-mysql"
   local:
     concurrency: 0
     push: false
@@ -48,61 +48,3 @@ build:
         noCache: true
         cacheFrom:
           - docker.io/amsidhmicroservice/ms-person-service
-
-deploy:
-  statusCheckDeadlineSeconds: 600
-  helm:
-    releases:
-      - name: ms-card-release
-        chartPath: helm/apps/ms-card-service-chart
-        namespace: apps
-        createNamespace: true
-        setValues:
-          deployment.imagePullPolicy: "Always"
-        packaged:
-          appVersion: "0.0.2-SNAPSHOT"
-          version: "0.0.2-SNAPSHOT"
-
-      - name: ms-account-release
-        chartPath: helm/apps/ms-account-service-chart
-        namespace: apps
-        createNamespace: true
-        setValues:
-          deployment.imagePullPolicy: "Always"
-        packaged:
-          appVersion: "0.0.2-SNAPSHOT"
-          version: "0.0.2-SNAPSHOT"
-
-      - name: ms-location-release
-        chartPath: helm/apps/ms-location-service-chart
-        namespace: apps
-        createNamespace: true
-        setValues:
-          deployment.imagePullPolicy: "Always"
-        packaged:
-          appVersion: "0.0.2-SNAPSHOT"
-          version: "0.0.2-SNAPSHOT"
-
-      - name: ms-address-release
-        chartPath: helm/apps/ms-address-service-chart
-        namespace: apps
-        createNamespace: true
-        setValues:
-          deployment.imagePullPolicy: "Always"
-        packaged:
-          appVersion: "0.0.2-SNAPSHOT"
-          version: "0.0.2-SNAPSHOT"
-
-      - name: ms-person-release
-        chartPath: helm/apps/ms-person-service-chart
-        namespace: apps
-        createNamespace: true
-        setValues:
-          deployment.imagePullPolicy: "Always"
-        packaged:
-          appVersion: "0.0.2-SNAPSHOT"
-          version: "0.0.2-SNAPSHOT"
-
-
-
-

@@ -1,0 +1,10 @@
+insert into person (person_id, name, mobile_number, email_id) values (1, 'Amsidh Lokhande1', 8108551841, 'amsidhlokhande1@gmail.com');
+insert into person (person_id, name, mobile_number, email_id) values (2, 'Amsidh Lokhande2', 8108551841, 'amsidhlokhande2@gmail.com');
+insert into person (person_id, name, mobile_number, email_id) values (3, 'Amsidh Lokhande3', 8108551843, 'amsidhlokhande3@gmail.com');
+insert into person (person_id, name, mobile_number, email_id) values (4, 'Amsidh Lokhande4', 8108551844, 'amsidhlokhande4@gmail.com');
+insert into person (person_id, name, mobile_number, email_id) values (5, 'Amsidh Lokhande5', 8108551845, 'amsidhlokhande5@gmail.com');
+insert into person (person_id, name, mobile_number, email_id) values (6, 'Amsidh Lokhande6', 8108551846, 'amsidhlokhande6@gmail.com');
+insert into person (person_id, name, mobile_number, email_id) values (7, 'Amsidh Lokhande7', 8108551847, 'amsidhlokhande7@gmail.com');
+insert into person (person_id, name, mobile_number, email_id) values (8, 'Amsidh Lokhande8', 8108551848, 'amsidhlokhande8@gmail.com');
+insert into person (person_id, name, mobile_number, email_id) values (9, 'Amsidh Lokhande9', 8108551849, 'amsidhlokhande9@gmail.com');
+insert into person (person_id, name, mobile_number, email_id) values (10, 'Amsidh Lokhande10', 8108551840, 'amsidhlokhande10@gmail.com');

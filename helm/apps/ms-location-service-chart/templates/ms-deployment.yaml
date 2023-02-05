@@ -42,7 +42,7 @@ spec:
               port: {{.Values.deployment.portName}}
             failureThreshold: 5
             periodSeconds: 10
-            initialDelaySeconds: 20
+            initialDelaySeconds: 45
             timeoutSeconds: 10
             successThreshold: 1
           readinessProbe:
@@ -51,7 +51,7 @@ spec:
               port: {{.Values.deployment.portName}}
             failureThreshold: 5
             periodSeconds: 10
-            initialDelaySeconds: 20
+            initialDelaySeconds: 45
             timeoutSeconds: 10
             successThreshold: 1
 

@@ -27,7 +27,16 @@ public class AddressServiceApplication implements CommandLineRunner {
     public void run(String... args) {
         log.info("Cleaning Address table");
         addressRepository.deleteAll();
-        List<Address> addresses = Arrays.asList(Address.builder().addressId(1l).city("Pune").state("Maharashtra").build(), Address.builder().addressId(2l).city("Mumbai").state("Maharashtra").build(), Address.builder().addressId(3l).city("Bijapur").state("Maharashtra").build(), Address.builder().addressId(4l).city("Satara").state("Maharashtra").build(), Address.builder().addressId(5l).city("PWC").state("Maharashtra").build(), Address.builder().addressId(6l).city("Sangli").state("Maharashtra").build(), Address.builder().addressId(7l).city("Karad").state("Maharashtra").build(), Address.builder().addressId(8l).city("Kolhapur").state("Maharashtra").build(), Address.builder().addressId(9l).city("Solapur").state("Maharashtra").build(), Address.builder().addressId(10l).city("Panel").state("Maharashtra").build());
+        List<Address> addresses = Arrays.asList(Address.builder().addressId(1l).city("Pune").state("Maharashtra").build(),
+                Address.builder().addressId(2l).city("Mumbai").state("Maharashtra").build(),
+                Address.builder().addressId(3l).city("Bijapur").state("Maharashtra").build(),
+                Address.builder().addressId(4l).city("Satara").state("Maharashtra").build(),
+                Address.builder().addressId(5l).city("PWC").state("Maharashtra").build(),
+                Address.builder().addressId(6l).city("Sangli").state("Maharashtra").build(),
+                Address.builder().addressId(7l).city("Karad").state("Maharashtra").build(),
+                Address.builder().addressId(8l).city("Kolhapur").state("Maharashtra").build(),
+                Address.builder().addressId(9l).city("Solapur").state("Maharashtra").build(),
+                Address.builder().addressId(10l).city("Panel").state("Maharashtra").build());
         List<Address> savedAddresses = addressRepository.saveAll(addresses);
         log.info("Number of address saved are {}", savedAddresses.size());
     }
