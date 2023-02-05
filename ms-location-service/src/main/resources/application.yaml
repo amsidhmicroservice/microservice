@@ -25,7 +25,7 @@ spring:
   jpa:
     properties:
       hibernate.show_sql: false
-      hibernate.hbm2ddl.auto: none
+      hibernate.hbm2ddl.auto: update
       hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
       hibernate.generate_statistics: false
     database-platform: mysql

@@ -1,3 +1,4 @@
+use persondb;
 insert into person (person_id, name, mobile_number, email_id) values (1, 'Amsidh Lokhande1', 8108551841, 'amsidhlokhande1@gmail.com');
 insert into person (person_id, name, mobile_number, email_id) values (2, 'Amsidh Lokhande2', 8108551841, 'amsidhlokhande2@gmail.com');
 insert into person (person_id, name, mobile_number, email_id) values (3, 'Amsidh Lokhande3', 8108551843, 'amsidhlokhande3@gmail.com');

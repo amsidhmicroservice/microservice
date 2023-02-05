@@ -1,3 +1,4 @@
+use carddb;
 insert into card (card_id, card_number, card_type)
 values (1, 989678567487945461, 'Credit');
 insert into card (card_id, card_number, card_type)

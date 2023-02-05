@@ -1,3 +1,4 @@
+use addressdb;
 insert into address (address_id, city, state) values (1, 'Pune', 'Maharashtra');
 insert into address (address_id, city, state) values (2, 'Mumbai', 'Maharashtra');
 insert into address (address_id, city, state) values (3, 'Bijapur', 'Karnataka');

@@ -1,3 +1,4 @@
+use accountdb;
 insert into account (account_id, account_number, account_type) values (1, 98363365211, 'Saving');
 insert into account (account_id, account_number, account_type) values (2, 98363365212, 'Loan');
 insert into account (account_id, account_number, account_type) values (3, 98363365213, 'Overdraft');

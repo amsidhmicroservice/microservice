@@ -1,3 +1,4 @@
+use locationdb;
 insert into location (location_id, longitude, latitude) values (1, 98792.6761, 986834.5671);
 insert into location (location_id, longitude, latitude) values (2, 98793.6762, 986895.5672);
 insert into location (location_id, longitude, latitude) values (3, 98794.6763, 986892.5673);
