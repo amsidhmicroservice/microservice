@@ -3,7 +3,7 @@ kind: Config
 build:
   tagPolicy:
     envTemplate:
-      template: "0.0.1-mysql"
+      template: "1.0.0"
   local:
     concurrency: 0
     push: false

@@ -1,6 +1,0 @@
-apiVersion: v1
-appVersion: 0.0.1-mysql
-description: A Helm chart for ms-account-service-chart
-name: ms-account-service-chart
-version: 0.0.1-mysql
-

@@ -1,7 +1,0 @@
-deployment:
-  imageName: 6.8.23
-  name: quickstart
-  numberOfReplicas: 1
-
-service:
-  type: LoadBalancer

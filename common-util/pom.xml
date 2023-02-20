@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.amsidh.mvc</groupId>
         <artifactId>microservice</artifactId>
-        <version>0.0.1-mysql</version>
+        <version>1.0.0</version>
     </parent>
     <artifactId>common-util</artifactId>
     <name>common-util</name>

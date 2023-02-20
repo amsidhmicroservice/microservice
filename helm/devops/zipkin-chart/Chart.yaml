@@ -1,6 +1,0 @@
-apiVersion: v1
-appVersion: 0.0.1-mysql
-description: A Helm chart for zipkin-chart
-name: zipkin-chart
-version: 1.0.0
-

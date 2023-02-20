@@ -24,13 +24,13 @@ https://kubernetes.github.io/ingress-nginx/deploy/#docker-for-mac
 ### For kubectl not able to pull images from know repository then please do the following steps:
 
 1. Uncheck >Docker Desktop-> Resource-> WSL Integration
-   ![docker.png](docker.png)
+   ![docker.png](static/docker.png)
 
 
 ### Helm packaging using PGP security
 helm package --sign --key amsidhlokhande@gmail.com --keyring C:\Users\amsid\AppData\Roaming\gnupg\secring.pgp helm\ms-account-service-chart -d helmcharts
 
-helm show all oci://registry-1.docker.io/amsidhmicroservice/ms-card-service-chart --version 0.0.1-mysql
+helm show all oci://registry-1.docker.io/amsidhmicroservice/ms-card-service-chart --version 1.0.0
 
 
 ### Prior to install helm chart of elastic and kibana of quickstart we have to install the crd using kubectl command

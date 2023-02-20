@@ -1,6 +1,0 @@
-apiVersion: v1
-appVersion: 0.0.1-mysql
-description: A Helm chart for ms-location-service-chart
-name: ms-location-service-chart
-version: 0.0.1-mysql
-
